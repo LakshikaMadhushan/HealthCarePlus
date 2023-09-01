@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.30.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -59,17 +60,35 @@
     <Compile Include="DashBoard.Designer.cs">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Medication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Medication.Designer.cs">
+      <DependentUpon>Medication.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatientPop.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PatientPop.Designer.cs">
       <DependentUpon>PatientPop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Payment.Designer.cs">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resource.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resource.Designer.cs">
+      <DependentUpon>Resource.cs</DependentUpon>
     </Compile>
     <Compile Include="TheaterPop.cs">
       <SubType>Form</SubType>
@@ -121,11 +140,20 @@
     <EmbeddedResource Include="DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Medication.resx">
+      <DependentUpon>Medication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PatientPop.resx">
       <DependentUpon>PatientPop.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Payment.resx">
+      <DependentUpon>Payment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.resx">
+      <DependentUpon>Resource.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TheaterPop.resx">
       <DependentUpon>TheaterPop.cs</DependentUpon>
@@ -169,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

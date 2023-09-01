@@ -55,16 +55,20 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.picLogout = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnMedication = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnResource = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.btnTheaters = new System.Windows.Forms.Button();
+            this.btnSchedule = new System.Windows.Forms.Button();
+            this.btnStaff = new System.Windows.Forms.Button();
+            this.btnAppointment = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegistration = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -79,6 +83,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogout)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -300,7 +305,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // label3
             // 
@@ -354,16 +358,25 @@
             this.label2.Size = new System.Drawing.Size(156, 19);
             this.label2.TabIndex = 0;
             this.label2.Text = "ACTIVE DOCTORS";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.picLogout);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(264, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1098, 72);
             this.panel2.TabIndex = 18;
+            // 
+            // picLogout
+            // 
+            this.picLogout.Location = new System.Drawing.Point(976, 10);
+            this.picLogout.Name = "picLogout";
+            this.picLogout.Size = new System.Drawing.Size(100, 50);
+            this.picLogout.TabIndex = 1;
+            this.picLogout.TabStop = false;
+            this.picLogout.Click += new System.EventHandler(this.picLogout_Click);
             // 
             // label1
             // 
@@ -379,121 +392,170 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button9);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.BtnMedication);
+            this.panel1.Controls.Add(this.btnReport);
+            this.panel1.Controls.Add(this.btnResource);
+            this.panel1.Controls.Add(this.btnDashboard);
+            this.panel1.Controls.Add(this.btnPayment);
+            this.panel1.Controls.Add(this.btnTheaters);
+            this.panel1.Controls.Add(this.btnSchedule);
+            this.panel1.Controls.Add(this.btnStaff);
+            this.panel1.Controls.Add(this.btnAppointment);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnRegistration);
             this.panel1.Location = new System.Drawing.Point(21, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(223, 679);
             this.panel1.TabIndex = 17;
             // 
-            // button4
+            // BtnMedication
             // 
-            this.button4.BackColor = System.Drawing.Color.LightGreen;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.Location = new System.Drawing.Point(3, 157);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(217, 60);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "DashBoard";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.BtnMedication.BackColor = System.Drawing.Color.LightGreen;
+            this.BtnMedication.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnMedication.ForeColor = System.Drawing.Color.White;
+            this.BtnMedication.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnMedication.Location = new System.Drawing.Point(5, 515);
+            this.BtnMedication.Name = "BtnMedication";
+            this.BtnMedication.Size = new System.Drawing.Size(217, 52);
+            this.BtnMedication.TabIndex = 27;
+            this.BtnMedication.Text = "Medication Details";
+            this.BtnMedication.UseVisualStyleBackColor = false;
+            this.BtnMedication.Click += new System.EventHandler(this.BtnMedication_Click);
             // 
-            // button9
+            // btnReport
             // 
-            this.button9.BackColor = System.Drawing.Color.LightGreen;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button9.Location = new System.Drawing.Point(3, 512);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(217, 60);
-            this.button9.TabIndex = 12;
-            this.button9.Text = "Report";
-            this.button9.UseVisualStyleBackColor = false;
+            this.btnReport.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnReport.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnReport.Location = new System.Drawing.Point(5, 617);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(217, 52);
+            this.btnReport.TabIndex = 26;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
-            // button6
+            // btnResource
             // 
-            this.button6.BackColor = System.Drawing.Color.LightGreen;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.Location = new System.Drawing.Point(3, 452);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(217, 60);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Mange Theaters/Room";
-            this.button6.UseVisualStyleBackColor = false;
+            this.btnResource.BackColor = System.Drawing.Color.LightGreen;
+            this.btnResource.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResource.ForeColor = System.Drawing.Color.White;
+            this.btnResource.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnResource.Location = new System.Drawing.Point(4, 465);
+            this.btnResource.Name = "btnResource";
+            this.btnResource.Size = new System.Drawing.Size(217, 52);
+            this.btnResource.TabIndex = 25;
+            this.btnResource.Text = "Manage Resourse";
+            this.btnResource.UseVisualStyleBackColor = false;
+            this.btnResource.Click += new System.EventHandler(this.btnResource_Click);
             // 
-            // button5
+            // btnDashboard
             // 
-            this.button5.BackColor = System.Drawing.Color.LightGreen;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.Location = new System.Drawing.Point(3, 393);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(217, 60);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Manage Schedule";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btnDashboard.BackColor = System.Drawing.Color.Green;
+            this.btnDashboard.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.Color.White;
+            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDashboard.Location = new System.Drawing.Point(4, 165);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(217, 52);
+            this.btnDashboard.TabIndex = 24;
+            this.btnDashboard.Text = "DashBoard";
+            this.btnDashboard.UseVisualStyleBackColor = false;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // button3
+            // btnPayment
             // 
-            this.button3.BackColor = System.Drawing.Color.LightGreen;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.Location = new System.Drawing.Point(3, 334);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(217, 60);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Manage Staff";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnPayment.BackColor = System.Drawing.Color.LightGreen;
+            this.btnPayment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.White;
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPayment.Location = new System.Drawing.Point(5, 566);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(217, 52);
+            this.btnPayment.TabIndex = 23;
+            this.btnPayment.Text = "Payments";
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
             // 
-            // button2
+            // btnTheaters
             // 
-            this.button2.BackColor = System.Drawing.Color.LightGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.Location = new System.Drawing.Point(3, 275);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(217, 60);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Manage Appointment";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnTheaters.BackColor = System.Drawing.Color.LightGreen;
+            this.btnTheaters.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTheaters.ForeColor = System.Drawing.Color.White;
+            this.btnTheaters.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTheaters.Location = new System.Drawing.Point(4, 414);
+            this.btnTheaters.Name = "btnTheaters";
+            this.btnTheaters.Size = new System.Drawing.Size(217, 52);
+            this.btnTheaters.TabIndex = 22;
+            this.btnTheaters.Text = "Manage Theaters/Room";
+            this.btnTheaters.UseVisualStyleBackColor = false;
+            this.btnTheaters.Click += new System.EventHandler(this.btnTheaters_Click);
+            // 
+            // btnSchedule
+            // 
+            this.btnSchedule.BackColor = System.Drawing.Color.LightGreen;
+            this.btnSchedule.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSchedule.Location = new System.Drawing.Point(4, 363);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Size = new System.Drawing.Size(217, 52);
+            this.btnSchedule.TabIndex = 21;
+            this.btnSchedule.Text = "Manage Schedule";
+            this.btnSchedule.UseVisualStyleBackColor = false;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
+            // 
+            // btnStaff
+            // 
+            this.btnStaff.BackColor = System.Drawing.Color.LightGreen;
+            this.btnStaff.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStaff.ForeColor = System.Drawing.Color.White;
+            this.btnStaff.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnStaff.Location = new System.Drawing.Point(4, 312);
+            this.btnStaff.Name = "btnStaff";
+            this.btnStaff.Size = new System.Drawing.Size(217, 52);
+            this.btnStaff.TabIndex = 20;
+            this.btnStaff.Text = "Manage Staff";
+            this.btnStaff.UseVisualStyleBackColor = false;
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
+            // 
+            // btnAppointment
+            // 
+            this.btnAppointment.BackColor = System.Drawing.Color.LightGreen;
+            this.btnAppointment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppointment.ForeColor = System.Drawing.Color.White;
+            this.btnAppointment.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAppointment.Location = new System.Drawing.Point(4, 261);
+            this.btnAppointment.Name = "btnAppointment";
+            this.btnAppointment.Size = new System.Drawing.Size(217, 52);
+            this.btnAppointment.TabIndex = 19;
+            this.btnAppointment.Text = "Manage Appointment";
+            this.btnAppointment.UseVisualStyleBackColor = false;
+            this.btnAppointment.Click += new System.EventHandler(this.btnAppointment_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(220, 158);
-            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnRegistration
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGreen;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.Location = new System.Drawing.Point(3, 216);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(217, 60);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Patient Registration";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegistration.BackColor = System.Drawing.Color.LightGreen;
+            this.btnRegistration.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistration.ForeColor = System.Drawing.Color.White;
+            this.btnRegistration.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRegistration.Location = new System.Drawing.Point(4, 211);
+            this.btnRegistration.Name = "btnRegistration";
+            this.btnRegistration.Size = new System.Drawing.Size(217, 52);
+            this.btnRegistration.TabIndex = 17;
+            this.btnRegistration.Text = "Patient Registration";
+            this.btnRegistration.UseVisualStyleBackColor = false;
+            this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
             // DashBoard
             // 
@@ -504,6 +566,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "DashBoard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DashBoard";
             this.panel3.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -526,6 +589,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogout)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -538,14 +602,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel9;
@@ -570,5 +626,17 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button BtnMedication;
+        private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnResource;
+        private System.Windows.Forms.Button btnDashboard;
+        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button btnTheaters;
+        private System.Windows.Forms.Button btnSchedule;
+        private System.Windows.Forms.Button btnStaff;
+        private System.Windows.Forms.Button btnAppointment;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnRegistration;
+        private System.Windows.Forms.PictureBox picLogout;
     }
 }

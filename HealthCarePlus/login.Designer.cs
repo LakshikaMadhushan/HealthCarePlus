@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.txtLoginValidation = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.loginPic)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -90,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 129);
+            this.label2.Location = new System.Drawing.Point(11, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 20);
             this.label2.TabIndex = 4;
@@ -99,7 +101,7 @@
             // 
             // passwordtxt
             // 
-            this.passwordtxt.Location = new System.Drawing.Point(14, 152);
+            this.passwordtxt.Location = new System.Drawing.Point(14, 146);
             this.passwordtxt.Name = "passwordtxt";
             this.passwordtxt.Size = new System.Drawing.Size(250, 26);
             this.passwordtxt.TabIndex = 5;
@@ -108,6 +110,7 @@
             // groupBox1
             // 
             this.groupBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.groupBox1.Controls.Add(this.txtLoginValidation);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.loginbtn);
@@ -129,21 +132,21 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.LimeGreen;
-            this.label4.Location = new System.Drawing.Point(76, 271);
+            this.label4.Location = new System.Drawing.Point(74, 270);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 17);
+            this.label4.Size = new System.Drawing.Size(127, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "create an account?";
+            this.label4.Text = "Update Password?";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(50, 248);
+            this.label3.Location = new System.Drawing.Point(33, 245);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 17);
+            this.label3.Size = new System.Drawing.Size(217, 17);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Don’t have an account yet?";
+            this.label3.Text = "Don’t have remember Password?";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label5
@@ -168,12 +171,34 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorMessage.Location = new System.Drawing.Point(493, 495);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(11, 16);
+            this.lblErrorMessage.TabIndex = 9;
+            this.lblErrorMessage.Text = "-";
+            // 
+            // txtLoginValidation
+            // 
+            this.txtLoginValidation.AutoSize = true;
+            this.txtLoginValidation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoginValidation.ForeColor = System.Drawing.Color.Red;
+            this.txtLoginValidation.Location = new System.Drawing.Point(12, 177);
+            this.txtLoginValidation.Name = "txtLoginValidation";
+            this.txtLoginValidation.Size = new System.Drawing.Size(11, 15);
+            this.txtLoginValidation.TabIndex = 10;
+            this.txtLoginValidation.Text = "-";
+            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(830, 530);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
@@ -204,6 +229,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.Label txtLoginValidation;
     }
 }
 

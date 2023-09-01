@@ -30,39 +30,41 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Schedule));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.timePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.timePickerStart = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmdDoctor = new System.Windows.Forms.ComboBox();
+            this.cmdStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtMax = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnMedication = new System.Windows.Forms.Button();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnResource = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnPayment = new System.Windows.Forms.Button();
+            this.btnTheaters = new System.Windows.Forms.Button();
+            this.btnSchedule = new System.Windows.Forms.Button();
+            this.btnStaff = new System.Windows.Forms.Button();
+            this.btnAppointment = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnRegistration = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -75,31 +77,31 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.timePickerEnd);
+            this.panel3.Controls.Add(this.timePickerStart);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.comboBox1);
-            this.panel3.Controls.Add(this.comboBox2);
+            this.panel3.Controls.Add(this.cmdDoctor);
+            this.panel3.Controls.Add(this.cmdStatus);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox1);
-            this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.txtDate);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.txtEmail);
+            this.panel3.Controls.Add(this.txtMax);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.txtId);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.txtName);
-            this.panel3.Controls.Add(this.button7);
-            this.panel3.Controls.Add(this.button8);
+            this.panel3.Controls.Add(this.txtPrice);
+            this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnRegister);
@@ -108,35 +110,52 @@
             this.panel3.Size = new System.Drawing.Size(1098, 579);
             this.panel3.TabIndex = 10;
             // 
+            // timePickerEnd
+            // 
+            this.timePickerEnd.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timePickerEnd.Location = new System.Drawing.Point(706, 149);
+            this.timePickerEnd.Name = "timePickerEnd";
+            this.timePickerEnd.Size = new System.Drawing.Size(291, 22);
+            this.timePickerEnd.TabIndex = 85;
+            // 
+            // timePickerStart
+            // 
+            this.timePickerStart.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timePickerStart.Location = new System.Drawing.Point(706, 88);
+            this.timePickerStart.Name = "timePickerStart";
+            this.timePickerStart.Size = new System.Drawing.Size(291, 22);
+            this.timePickerStart.TabIndex = 84;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 90);
+            this.label9.Location = new System.Drawing.Point(33, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(116, 25);
             this.label9.TabIndex = 83;
             this.label9.Text = "Schedule Id";
             // 
-            // comboBox1
+            // cmdDoctor
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.ItemHeight = 25;
-            this.comboBox1.Location = new System.Drawing.Point(182, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(291, 33);
-            this.comboBox1.TabIndex = 82;
+            this.cmdDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdDoctor.FormattingEnabled = true;
+            this.cmdDoctor.ItemHeight = 25;
+            this.cmdDoctor.Location = new System.Drawing.Point(182, 88);
+            this.cmdDoctor.Name = "cmdDoctor";
+            this.cmdDoctor.Size = new System.Drawing.Size(291, 33);
+            this.cmdDoctor.TabIndex = 82;
+            this.cmdDoctor.SelectedIndexChanged += new System.EventHandler(this.cmdDoctor_SelectedIndexChanged);
             // 
-            // comboBox2
+            // cmdStatus
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ItemHeight = 25;
-            this.comboBox2.Location = new System.Drawing.Point(706, 195);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(291, 33);
-            this.comboBox2.TabIndex = 81;
+            this.cmdStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdStatus.FormattingEnabled = true;
+            this.cmdStatus.ItemHeight = 25;
+            this.cmdStatus.Location = new System.Drawing.Point(706, 195);
+            this.cmdStatus.Name = "cmdStatus";
+            this.cmdStatus.Size = new System.Drawing.Size(291, 33);
+            this.cmdStatus.TabIndex = 81;
             // 
             // label8
             // 
@@ -159,29 +178,13 @@
             this.label4.Text = "Price";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox1
+            // txtDate
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(706, 142);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(291, 30);
-            this.textBox1.TabIndex = 78;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(706, 33);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(291, 22);
-            this.dateTimePicker1.TabIndex = 77;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(705, 85);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(291, 30);
-            this.textBox3.TabIndex = 76;
+            this.txtDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDate.Location = new System.Drawing.Point(706, 33);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(291, 22);
+            this.txtDate.TabIndex = 77;
             // 
             // label5
             // 
@@ -193,30 +196,31 @@
             this.label5.TabIndex = 67;
             this.label5.Text = "Max Patient";
             // 
-            // txtEmail
+            // txtMax
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(182, 195);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(291, 30);
-            this.txtEmail.TabIndex = 66;
+            this.txtMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMax.Location = new System.Drawing.Point(182, 195);
+            this.txtMax.Name = "txtMax";
+            this.txtMax.Size = new System.Drawing.Size(291, 30);
+            this.txtMax.TabIndex = 66;
             // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Gold;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnSearch.Location = new System.Drawing.Point(373, 83);
+            this.btnSearch.Location = new System.Drawing.Point(373, 29);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 32);
             this.btnSearch.TabIndex = 62;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(182, 85);
+            this.txtId.Location = new System.Drawing.Point(182, 31);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(185, 30);
             this.txtId.TabIndex = 61;
@@ -225,7 +229,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 31);
+            this.label3.Location = new System.Drawing.Point(33, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 60;
@@ -235,7 +239,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(555, 147);
+            this.label7.Location = new System.Drawing.Point(549, 145);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(96, 25);
             this.label7.TabIndex = 59;
@@ -255,58 +259,38 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(549, 88);
+            this.label2.Location = new System.Drawing.Point(547, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 25);
             this.label2.TabIndex = 53;
             this.label2.Text = "Start Time";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // txtName
+            // txtPrice
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(182, 144);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(291, 30);
-            this.txtName.TabIndex = 54;
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Location = new System.Drawing.Point(182, 144);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(291, 30);
+            this.txtPrice.TabIndex = 54;
             // 
-            // button7
+            // btnUpdate
             // 
-            this.button7.BackColor = System.Drawing.Color.Red;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.SystemColors.Window;
-            this.button7.Location = new System.Drawing.Point(155, 257);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(144, 41);
-            this.button7.TabIndex = 46;
-            this.button7.Text = "Remove";
-            this.button7.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.DarkOrange;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.SystemColors.Window;
-            this.button8.Location = new System.Drawing.Point(335, 257);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(138, 41);
-            this.button8.TabIndex = 45;
-            this.button8.Text = "Update";
-            this.button8.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnUpdate.Location = new System.Drawing.Point(552, 254);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(138, 41);
+            this.btnUpdate.TabIndex = 45;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.name,
-            this.address1,
-            this.Email,
-            this.Contact,
-            this.NIC,
-            this.gender,
-            this.Column1});
             this.dataGridView1.Location = new System.Drawing.Point(26, 331);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -314,85 +298,31 @@
             this.dataGridView1.Size = new System.Drawing.Size(1055, 216);
             this.dataGridView1.TabIndex = 44;
             // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Width = 75;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Doctor";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.Width = 150;
-            // 
-            // address1
-            // 
-            this.address1.HeaderText = "Date";
-            this.address1.MinimumWidth = 6;
-            this.address1.Name = "address1";
-            this.address1.Width = 125;
-            // 
-            // Email
-            // 
-            this.Email.HeaderText = "Start Time";
-            this.Email.MinimumWidth = 6;
-            this.Email.Name = "Email";
-            this.Email.Width = 125;
-            // 
-            // Contact
-            // 
-            this.Contact.HeaderText = "End Time";
-            this.Contact.MinimumWidth = 6;
-            this.Contact.Name = "Contact";
-            this.Contact.Width = 125;
-            // 
-            // NIC
-            // 
-            this.NIC.HeaderText = "Status";
-            this.NIC.MinimumWidth = 6;
-            this.NIC.Name = "NIC";
-            this.NIC.Width = 150;
-            // 
-            // gender
-            // 
-            this.gender.HeaderText = "Max Patient";
-            this.gender.MinimumWidth = 6;
-            this.gender.Name = "gender";
-            this.gender.Width = 150;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Price";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
-            // 
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.Gold;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnClear.Location = new System.Drawing.Point(859, 258);
+            this.btnClear.Location = new System.Drawing.Point(859, 253);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(138, 41);
             this.btnClear.TabIndex = 42;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.LimeGreen;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnRegister.Location = new System.Drawing.Point(677, 258);
+            this.btnRegister.Location = new System.Drawing.Point(702, 254);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(151, 40);
             this.btnRegister.TabIndex = 27;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // panel2
             // 
@@ -417,6 +347,17 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.BtnMedication);
+            this.panel1.Controls.Add(this.btnReport);
+            this.panel1.Controls.Add(this.btnResource);
+            this.panel1.Controls.Add(this.btnDashboard);
+            this.panel1.Controls.Add(this.btnPayment);
+            this.panel1.Controls.Add(this.btnTheaters);
+            this.panel1.Controls.Add(this.btnSchedule);
+            this.panel1.Controls.Add(this.btnStaff);
+            this.panel1.Controls.Add(this.btnAppointment);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Controls.Add(this.btnRegistration);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button6);
@@ -429,6 +370,154 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(223, 679);
             this.panel1.TabIndex = 8;
+            // 
+            // BtnMedication
+            // 
+            this.BtnMedication.BackColor = System.Drawing.Color.LightGreen;
+            this.BtnMedication.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnMedication.ForeColor = System.Drawing.Color.White;
+            this.BtnMedication.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnMedication.Location = new System.Drawing.Point(5, 515);
+            this.BtnMedication.Name = "BtnMedication";
+            this.BtnMedication.Size = new System.Drawing.Size(217, 52);
+            this.BtnMedication.TabIndex = 32;
+            this.BtnMedication.Text = "Medication Details";
+            this.BtnMedication.UseVisualStyleBackColor = false;
+            this.BtnMedication.Click += new System.EventHandler(this.BtnMedication_Click);
+            // 
+            // btnReport
+            // 
+            this.btnReport.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnReport.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReport.ForeColor = System.Drawing.Color.White;
+            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnReport.Location = new System.Drawing.Point(5, 617);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(217, 52);
+            this.btnReport.TabIndex = 31;
+            this.btnReport.Text = "Report";
+            this.btnReport.UseVisualStyleBackColor = false;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // btnResource
+            // 
+            this.btnResource.BackColor = System.Drawing.Color.LightGreen;
+            this.btnResource.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResource.ForeColor = System.Drawing.Color.White;
+            this.btnResource.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnResource.Location = new System.Drawing.Point(4, 465);
+            this.btnResource.Name = "btnResource";
+            this.btnResource.Size = new System.Drawing.Size(217, 52);
+            this.btnResource.TabIndex = 30;
+            this.btnResource.Text = "Manage Resourse";
+            this.btnResource.UseVisualStyleBackColor = false;
+            this.btnResource.Click += new System.EventHandler(this.btnResource_Click);
+            // 
+            // btnDashboard
+            // 
+            this.btnDashboard.BackColor = System.Drawing.Color.LightGreen;
+            this.btnDashboard.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashboard.ForeColor = System.Drawing.Color.White;
+            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnDashboard.Location = new System.Drawing.Point(4, 165);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(217, 52);
+            this.btnDashboard.TabIndex = 29;
+            this.btnDashboard.Text = "DashBoard";
+            this.btnDashboard.UseVisualStyleBackColor = false;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            // 
+            // btnPayment
+            // 
+            this.btnPayment.BackColor = System.Drawing.Color.LightGreen;
+            this.btnPayment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayment.ForeColor = System.Drawing.Color.White;
+            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPayment.Location = new System.Drawing.Point(5, 566);
+            this.btnPayment.Name = "btnPayment";
+            this.btnPayment.Size = new System.Drawing.Size(217, 52);
+            this.btnPayment.TabIndex = 28;
+            this.btnPayment.Text = "Payments";
+            this.btnPayment.UseVisualStyleBackColor = false;
+            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
+            // 
+            // btnTheaters
+            // 
+            this.btnTheaters.BackColor = System.Drawing.Color.LightGreen;
+            this.btnTheaters.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTheaters.ForeColor = System.Drawing.Color.White;
+            this.btnTheaters.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTheaters.Location = new System.Drawing.Point(4, 414);
+            this.btnTheaters.Name = "btnTheaters";
+            this.btnTheaters.Size = new System.Drawing.Size(217, 52);
+            this.btnTheaters.TabIndex = 27;
+            this.btnTheaters.Text = "Manage Theaters/Room";
+            this.btnTheaters.UseVisualStyleBackColor = false;
+            this.btnTheaters.Click += new System.EventHandler(this.btnTheaters_Click);
+            // 
+            // btnSchedule
+            // 
+            this.btnSchedule.BackColor = System.Drawing.Color.Green;
+            this.btnSchedule.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSchedule.Location = new System.Drawing.Point(4, 363);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Size = new System.Drawing.Size(217, 52);
+            this.btnSchedule.TabIndex = 26;
+            this.btnSchedule.Text = "Manage Schedule";
+            this.btnSchedule.UseVisualStyleBackColor = false;
+            // 
+            // btnStaff
+            // 
+            this.btnStaff.BackColor = System.Drawing.Color.LightGreen;
+            this.btnStaff.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStaff.ForeColor = System.Drawing.Color.White;
+            this.btnStaff.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnStaff.Location = new System.Drawing.Point(4, 312);
+            this.btnStaff.Name = "btnStaff";
+            this.btnStaff.Size = new System.Drawing.Size(217, 52);
+            this.btnStaff.TabIndex = 25;
+            this.btnStaff.Text = "Manage Staff";
+            this.btnStaff.UseVisualStyleBackColor = false;
+            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
+            // 
+            // btnAppointment
+            // 
+            this.btnAppointment.BackColor = System.Drawing.Color.LightGreen;
+            this.btnAppointment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppointment.ForeColor = System.Drawing.Color.White;
+            this.btnAppointment.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAppointment.Location = new System.Drawing.Point(4, 261);
+            this.btnAppointment.Name = "btnAppointment";
+            this.btnAppointment.Size = new System.Drawing.Size(217, 52);
+            this.btnAppointment.TabIndex = 24;
+            this.btnAppointment.Text = "Manage Appointment";
+            this.btnAppointment.UseVisualStyleBackColor = false;
+            this.btnAppointment.Click += new System.EventHandler(this.btnAppointment_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(1, 10);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(220, 158);
+            this.pictureBox2.TabIndex = 23;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnRegistration
+            // 
+            this.btnRegistration.BackColor = System.Drawing.Color.LightGreen;
+            this.btnRegistration.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistration.ForeColor = System.Drawing.Color.White;
+            this.btnRegistration.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRegistration.Location = new System.Drawing.Point(4, 211);
+            this.btnRegistration.Name = "btnRegistration";
+            this.btnRegistration.Size = new System.Drawing.Size(217, 52);
+            this.btnRegistration.TabIndex = 22;
+            this.btnRegistration.Text = "Patient Registration";
+            this.btnRegistration.UseVisualStyleBackColor = false;
+            this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
             // button4
             // 
@@ -539,13 +628,16 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Schedule";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schedule";
+            this.Load += new System.EventHandler(this.Schedule_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -554,39 +646,28 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox txtMax;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker txtDate;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn address1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NIC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.ComboBox cmdDoctor;
+        private System.Windows.Forms.ComboBox cmdStatus;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button6;
@@ -595,5 +676,18 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnMedication;
+        private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.Button btnResource;
+        private System.Windows.Forms.Button btnDashboard;
+        private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.Button btnTheaters;
+        private System.Windows.Forms.Button btnSchedule;
+        private System.Windows.Forms.Button btnStaff;
+        private System.Windows.Forms.Button btnAppointment;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button btnRegistration;
+        private System.Windows.Forms.DateTimePicker timePickerStart;
+        private System.Windows.Forms.DateTimePicker timePickerEnd;
     }
 }

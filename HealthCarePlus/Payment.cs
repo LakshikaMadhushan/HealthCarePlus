@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HealthCarePlus
 {
-    public partial class DashBoard : Form
+    public partial class Payment : Form
     {
-        public DashBoard()
+        public Payment()
         {
             InitializeComponent();
         }
@@ -30,13 +30,7 @@ namespace HealthCarePlus
 
         private void btnPayment_Click(object sender, EventArgs e)
         {
-            Payment payment = new Payment();
-            if (payment == null)
-            {
-                payment.Parent = this;
-            }
-            payment.Show();
-            this.Hide();
+
         }
 
         private void BtnMedication_Click(object sender, EventArgs e)
@@ -107,6 +101,7 @@ namespace HealthCarePlus
 
         private void btnRegistration_Click(object sender, EventArgs e)
         {
+            Registration registration = new Registration();
             Patient patient = new Patient();
             if (patient == null)
             {
@@ -124,17 +119,6 @@ namespace HealthCarePlus
                 dashBoard.Parent = this;
             }
             dashBoard.Show();
-            this.Hide();
-        }
-
-        private void picLogout_Click(object sender, EventArgs e)
-        {
-            login l = new login();
-            if (l == null)
-            {
-                l.Parent = this;
-            }
-            l.Show();
             this.Hide();
         }
     }
