@@ -417,5 +417,21 @@ namespace HealthCarePlus
         {
 
         }
+
+        private void btnBill_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtPId.Text))
+            {
+                MessageBox.Show("Please Fill All Required Field.");
+                return;
+            }
+            Bill bill = new Bill(txtPId.Text);
+            if (bill == null)
+            {
+                bill.Parent = this;
+            }
+            bill.Show();
+            //this.Hide();
+        }
     }
 }

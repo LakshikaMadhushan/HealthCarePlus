@@ -64,6 +64,7 @@
             this.btnRegistration = new System.Windows.Forms.Button();
             this.txtPDate = new System.Windows.Forms.DateTimePicker();
             this.cmbType = new System.Windows.Forms.ComboBox();
+            this.btnBill = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnBill);
             this.panel3.Controls.Add(this.cmbType);
             this.panel3.Controls.Add(this.txtPDate);
             this.panel3.Controls.Add(this.label2);
@@ -266,7 +268,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(959, 284);
+            this.dataGridView1.Size = new System.Drawing.Size(959, 267);
             this.dataGridView1.TabIndex = 88;
             // 
             // btnClear
@@ -510,6 +512,19 @@
             this.cmbType.Size = new System.Drawing.Size(291, 33);
             this.cmbType.TabIndex = 114;
             // 
+            // btnBill
+            // 
+            this.btnBill.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBill.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnBill.Location = new System.Drawing.Point(293, 543);
+            this.btnBill.Name = "btnBill";
+            this.btnBill.Size = new System.Drawing.Size(455, 39);
+            this.btnBill.TabIndex = 151;
+            this.btnBill.Text = "Bill Generate";
+            this.btnBill.UseVisualStyleBackColor = false;
+            this.btnBill.Click += new System.EventHandler(this.btnBill_Click);
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -570,5 +585,6 @@
         private System.Windows.Forms.Button btnRegistration;
         private System.Windows.Forms.ComboBox cmbType;
         private System.Windows.Forms.DateTimePicker txtPDate;
+        private System.Windows.Forms.Button btnBill;
     }
 }

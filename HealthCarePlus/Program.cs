@@ -104,7 +104,8 @@ namespace HealthCarePlus
             //Application.Run(new Staff());
             //Application.Run(new Theater());
             //Application.Run(new TheaterPop());
-            Application.Run(new Medication());
+            Application.Run(new Bill());
+            //Application.Run(new Medication());
             //Application.Run(new Schedule());
             //Application.Run(new Report());
             //Application.Run(new DashBoard());
