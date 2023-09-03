@@ -412,5 +412,10 @@ namespace HealthCarePlus
                 connection.Close();
             }
         }
+
+        private void txtPName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

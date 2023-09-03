@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -206,6 +207,7 @@ namespace HealthCarePlus
 
         private void cmdDoctor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //cmbDate.Items.Clear();
             schedule_load();
         }
         private void schedule_load()
@@ -215,7 +217,7 @@ namespace HealthCarePlus
                 connection.Open();
 
                 // Define your SQL query to retrieve active doctors.
-                string query = "SELECT * FROM schedule WHERE userId = @Id AND status = 'ACTIVE'";
+                string query = "SELECT * FROM schedule WHERE userId = @Id AND status = 'ACTIVE' AND date >= CURDATE()";
 
                 int selectedIndex = cmdDoctor.SelectedIndex;
                 int selectedDoctorId = 0;
@@ -292,7 +294,7 @@ namespace HealthCarePlus
                 connection.Open();
 
                 // Define your SQL query to retrieve active doctors.
-                string query = "SELECT * FROM schedule WHERE id = @Id ";
+                string query = "SELECT s.startTime AS startTime,s.endTime AS endTime,s.price AS price, COUNT(a.id) AS appointmentCount\r\nFROM schedule AS s\r\nLEFT JOIN appointment AS a ON s.id = a.scheduleId AND a.status = 'ACTIVE'\r\nWHERE s.id = @Id\r\nGROUP BY s.id;";
 
                 int selectedIndex = cmbDate.SelectedIndex;
                 int selectedDateId = 0;
@@ -318,15 +320,16 @@ namespace HealthCarePlus
                         while (reader.Read())
                         {
                             // Retrieve the id and name.
-                            int id = reader.GetInt32("id");
+                            //int id = reader.GetInt32("id");
                             string startTime = reader.GetString("startTime");
                             string endTime = reader.GetString("endTime");
-                            int maxPatient = reader.GetInt32("maxPatient");
+                            //int maxPatient = reader.GetInt32("maxPatient");
                             string price = reader.GetString("price");
-                            int countPatient = reader.GetInt32("countPatient");
+                            //int countPatient = reader.GetInt32("countPatient");
+                            int appointmentCount = reader.GetInt32("appointmentCount");
 
                             txtPrice.Text = price;
-                            txtCount.Text = (maxPatient - countPatient) + "";
+                            txtCount.Text = appointmentCount+"";
                             txtTime.Text = startTime + " To " + endTime;
                         }
 
@@ -445,62 +448,85 @@ namespace HealthCarePlus
                         // Execute the appointment table insert.
                         int rowsAffected = insertAppointmentCommand.ExecuteNonQuery();
 
-                        if (rowsAffected > 0)
-                        {
-                            // Successfully inserted into the appointment table.
+                        //if (rowsAffected > 0)
+                        //{
+                        //    // Successfully inserted into the appointment table.
 
-                            //update the "schedule" table by incrementing countPatient by 1.
-                            string updateScheduleQuery = "UPDATE schedule SET countPatient = countPatient + 1 WHERE id = @ScheduleId";
-
-
-                            using (MySqlCommand updateScheduleCommand = new MySqlCommand(updateScheduleQuery, connection))
-                            {
-                                updateScheduleCommand.Transaction = transaction;
+                        //    //update the "schedule" table by incrementing countPatient by 1.
+                        //    string updateScheduleQuery = "UPDATE schedule SET countPatient = countPatient + 1 WHERE id = @ScheduleId";
 
 
-                                updateScheduleCommand.Parameters.AddWithValue("@ScheduleId", selectedSchedule);
+                        //    using (MySqlCommand updateScheduleCommand = new MySqlCommand(updateScheduleQuery, connection))
+                        //    {
+                        //        updateScheduleCommand.Transaction = transaction;
 
 
-                                int rowsUpdated = updateScheduleCommand.ExecuteNonQuery();
+                        //        updateScheduleCommand.Parameters.AddWithValue("@ScheduleId", selectedSchedule);
 
-                                if (rowsUpdated > 0)
+
+                        //        int rowsUpdated = updateScheduleCommand.ExecuteNonQuery();
+
+                                //if (rowsUpdated > 0)
+                                if (rowsAffected > 0)
                                 {
-
+                                    // Commit the transaction to save the appointment and update the schedule.
                                     transaction.Commit();
-                                    connection.Close();
-                                    Console.WriteLine("Appointment and schedule updated successfully.");
-                                }
-                                else
-                                {
 
-                                    transaction.Rollback();
-                                    connection.Close();
-                                    Console.WriteLine("Failed to update schedule.");
+                                    // Now, insert a payment row related to this appointment.
+                                    string insertPaymentQuery = "INSERT INTO payment (appointmentId, typeId, paymentDate, price, type, status, patientName,patientId) " +
+                                                               "VALUES (@AppointmentId, @TypeId, @PaymentDate, @Price, @Type, @Status, @PatientName,@PatientId)";
+
+                                    using (MySqlCommand insertPaymentCommand = new MySqlCommand(insertPaymentQuery, connection))
+                                    {
+                                        insertPaymentCommand.Parameters.AddWithValue("@AppointmentId", insertAppointmentCommand.LastInsertedId);
+                                        insertPaymentCommand.Parameters.AddWithValue("@TypeId", 0); // Update the type as needed
+                                        insertPaymentCommand.Parameters.AddWithValue("@PaymentDate", DateTime.Now.Date);
+                                        insertPaymentCommand.Parameters.AddWithValue("@Price", txtPrice.Text);
+                                        insertPaymentCommand.Parameters.AddWithValue("@Type", "APPOINTMENT");
+                                        insertPaymentCommand.Parameters.AddWithValue("@Status", "PENDING");
+                                        insertPaymentCommand.Parameters.AddWithValue("@PatientName", txtName.Text);
+                                        insertPaymentCommand.Parameters.AddWithValue("@PatientId", txtId.Text);
+
+                                        int rowsPaymentInserted = insertPaymentCommand.ExecuteNonQuery();
+
+                                        if (rowsPaymentInserted > 0)
+                                        {
+                                            Console.WriteLine("Payment record inserted successfully.");
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Failed to insert payment record.");
+                                        }
+                                    }
                                 }
-                            }
-                        }
                         else
                         {
-
                             transaction.Rollback();
-                            connection.Close();
-                            Console.WriteLine("Failed to insert appointment.");
+                            Console.WriteLine("Failed to update schedule.");
                         }
+                        //}
                     }
+                        //else
+                        //{
+                        //    transaction.Rollback();
+                        //    Console.WriteLine("Failed to insert appointment.");
+                        //}
+                    //}
+
                     table_load();
-                    connection.Close();
                 }
                 catch (Exception ex)
                 {
-
                     transaction.Rollback();
-
                     Console.WriteLine("Transaction error: " + ex.Message);
                 }
-
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
-        private void btnSearch2_Click(object sender, EventArgs e)
+            private void btnSearch2_Click(object sender, EventArgs e)
         {
             try
             {
@@ -582,172 +608,64 @@ namespace HealthCarePlus
                 return;
 
             }
-            //try
-            //{
-            //    connection.Open();
-
-            //    // Define your SQL query to update the "status" in the "appointment" table.
-            //    string updateQuery = "UPDATE appointment SET status = @Status WHERE id = @AppointmentId";
-
-            //    // Create a MySqlCommand with the query and connection.
-            //    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
-            //    {
-            //        // Set parameter values for the UPDATE query.
-            //        updateCommand.Parameters.AddWithValue("@Status", cmbStatus.Text);
-            //        updateCommand.Parameters.AddWithValue("@AppointmentId", txtAppointment.Text);
-
-            //        // Execute the UPDATE query.
-            //        int rowsAffected = updateCommand.ExecuteNonQuery();
-
-            //        if (rowsAffected > 0)
-            //        {
-            //            Console.WriteLine("Update successful.");
-            //            connection.Close();
-            //            table_load();
-
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("No records were updated.");
-            //        }
-
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Error: " + ex.Message);
-            //}
-            //finally
-            //{
-            //    connection.Close();
-            //}
-            //=====================
-            connection.Open();
-            // Start a SQL transaction.
-            using (MySqlTransaction transaction = connection.BeginTransaction())
+            try
             {
-                try
+                connection.Open();
+
+                // Define your SQL query to update the "status" in the "appointment" table.
+                string updateQuery = "UPDATE appointment SET status = @Status WHERE id = @AppointmentId";
+
+                // Create a MySqlCommand with the query and connection.
+                using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
                 {
+                    // Set parameter values for the UPDATE query.
+                    updateCommand.Parameters.AddWithValue("@Status", cmbStatus.Text);
+                    updateCommand.Parameters.AddWithValue("@AppointmentId", txtAppointment.Text);
 
-                    //
-                    string getScheduleQuery = "SELECT\r\n    schedule.id AS scheduleId,\r\n    schedule.startTime,\r\n    schedule.endTime,\r\n    schedule.date AS scheduleDate,\r\n    schedule.countPatient AS scheduleCountPatient,\r\n    appointment.status AS appointmentStatus\r\nFROM\r\n    appointment\r\nINNER JOIN\r\n    schedule\r\nON\r\n    appointment.scheduleId = schedule.id\r\nWHERE\r\n    appointment.id = @AppointmentId;";
-                    MySqlCommand cmd = new MySqlCommand(getScheduleQuery, connection);
+                    // Execute the UPDATE query.
+                    int rowsAffected = updateCommand.ExecuteNonQuery();
 
-                    // Provide the ID you want to search for as a parameter
-                    cmd.Parameters.AddWithValue("@AppointmentId", txtAppointment.Text);
-
-                    int scheduleId = 0;
-                    string currentStatus = null;
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    if (rowsAffected > 0)
                     {
-                        if (reader.Read())
-                        {
-                            // Data found for the given ID
-                            scheduleId = reader.GetInt32("scheduleId");
-                            currentStatus = reader["appointmentStatus"].ToString();
+                        Console.WriteLine("Update successful.");
+                        connection.Close();
+                        table_load();
 
-                        }
-                        else
-                        {
-                            // No data found for the given ID
-                            MessageBox.Show("schedule not found.");
-                        }
                     }
-                    //
-                    // Define your SQL query to insert data into the "appointment" table.
-                    string updateQuery = "UPDATE appointment SET status = @Status WHERE id = @AppointmentId";
-                   
-                   
-                    // Create a MySqlCommand for the appointment table insert.
-                    using (MySqlCommand updateAppointmentCommand = new MySqlCommand(updateQuery, connection))
+                    else
                     {
-                        updateAppointmentCommand.Transaction = transaction;
-
-                        // Set parameter values for the appointment table insert.
-                        updateAppointmentCommand.Parameters.AddWithValue("@Status", cmbStatus.Text);
-                        updateAppointmentCommand.Parameters.AddWithValue("@AppointmentId", txtAppointment.Text);
-                      
-
-
-                        // Execute the appointment table insert.
-                        int rowsAffected = updateAppointmentCommand.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            // Successfully inserted into the appointment table.
-
-                       
-
-                            //string updateScheduleQuery = "UPDATE schedule SET countPatient = countPatient + 1 WHERE id = @ScheduleId";
-                            string updateScheduleQuery = null;
-                            if (currentStatus == "INACTIVE" && cmbStatus.Text == "ACTIVE")
-                            {
-                                // Increment patientCount by 1.
-                                updateScheduleQuery = "UPDATE schedule SET countPatient = countPatient + 1 WHERE id = @ScheduleId";
-                            }
-                            else if (currentStatus == "ACTIVE" && cmbStatus.Text == "INACTIVE")
-                            {
-                                // Decrement patientCount by 1.
-                                updateScheduleQuery = "UPDATE schedule SET countPatient = countPatient - 1 WHERE id = @ScheduleId";
-                            }
-                            else
-                            {
-                                MessageBox.Show("out of the logic."+ currentStatus+ cmbStatus.Text);
-                            }
-
-                            using (MySqlCommand updateScheduleCommand = new MySqlCommand(updateScheduleQuery, connection))
-                            {
-                                updateScheduleCommand.Transaction = transaction;
-
-
-                                updateScheduleCommand.Parameters.AddWithValue("@ScheduleId", scheduleId);
-
-
-                                int rowsUpdated = updateScheduleCommand.ExecuteNonQuery();
-
-                                if (rowsUpdated > 0)
-                                {
-
-                                    transaction.Commit();
-                                    connection.Close();
-                                    Console.WriteLine("Appointment and schedule updated successfully.");
-                                }
-                                else
-                                {
-
-                                    transaction.Rollback();
-                                    connection.Close();
-                                    Console.WriteLine("Failed to update schedule.");
-                                }
-                            }
-                        }
-                        else
-                        {
-
-                            transaction.Rollback();
-                            connection.Close();
-                            Console.WriteLine("Failed to insert appointment.");
-                        }
+                        Console.WriteLine("No records were updated.");
                     }
-                    table_load();
-                    connection.Close();
-                }
-                catch (Exception ex)
-                {
 
-                    transaction.Rollback();
-
-                    Console.WriteLine("Transaction error: " + ex.Message);
                 }
-                finally
-                {
-                    connection.Close();
-                }
-
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            //=====================
+
             //====================
         }
-    
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+         
+
+            txtId.Text = "";
+            txtPrice.Text = "";
+            txtName.Text = "";
+            cmbDate.Text = "";
+            cmdDoctor.Text = "";
+            cmbStatus.Text = "";
+            txtCount.Text = "";
+            txtAppointment.Text = "";
+
+        }
     }
 }
         

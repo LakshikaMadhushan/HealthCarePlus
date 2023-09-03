@@ -347,41 +347,84 @@ namespace HealthCarePlus
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtNames.Text)
-                || string.IsNullOrEmpty(txtIds.Text) || string.IsNullOrEmpty(cmbDose.SelectedItem.ToString())
-                || string.IsNullOrEmpty(txtDate.Text) || string.IsNullOrEmpty(txtCount.Text))
+            try
             {
-                MessageBox.Show("Please Fill All Required Field.");
-                return;
+                if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtNames.Text) || string.IsNullOrEmpty(txtPrice.Text)
+                    || string.IsNullOrEmpty(txtIds.Text) || string.IsNullOrEmpty(cmbDose.SelectedItem.ToString())
+                    || string.IsNullOrEmpty(txtDate.Text) || string.IsNullOrEmpty(txtCount.Text))
+                {
+                    MessageBox.Show("Please Fill All Required Field.");
+                    return;
+                }
+                connection.Open();
+
+                // Construct the INSERT query for Medication
+                string insertMedicationQuery = "INSERT INTO medication (date, patientId, noOfDays, dose, medicineId, patientName, medicineName) " +
+                                             "VALUES (@Date, @PatientId, @NoOfDays, @Dose, @MedicineId, @PatientName, @MedicineName)";
+
+                // Create a MySqlCommand with the INSERT query for Medication and connection
+                using (MySqlCommand medicationCommand = new MySqlCommand(insertMedicationQuery, connection))
+                {
+                    medicationCommand.Parameters.AddWithValue("@Date", txtDate.Value);
+                    medicationCommand.Parameters.AddWithValue("@PatientId", txtId.Text);
+                    medicationCommand.Parameters.AddWithValue("@NoOfDays", txtCount.Text);
+                    medicationCommand.Parameters.AddWithValue("@Dose", cmbDose.Text);
+                    medicationCommand.Parameters.AddWithValue("@MedicineId", txtIds.Text);
+                    medicationCommand.Parameters.AddWithValue("@PatientName", txtName.Text);
+                    medicationCommand.Parameters.AddWithValue("@MedicineName", txtNames.Text);
+
+                    // Execute the INSERT query for Medication
+                    int rowsAffectedMedication = medicationCommand.ExecuteNonQuery();
+
+                    if (rowsAffectedMedication > 0)
+                    {
+                        MessageBox.Show("Medication data saved successfully.");
+
+                        // Retrieve the ID of the last inserted Medication
+                        long lastInsertedMedicationId = medicationCommand.LastInsertedId; // Use the correct method to get the last inserted ID (e.g., LastInsertedId or SELECT MAX(id) as lastId)
+
+                        // Now, you can save the Payment information linked to this Medication and Patient
+                        string insertPaymentQuery = "INSERT INTO payment (medicationId, patientId, paymentDate, price, type, status, patientName) " +
+                                                    "VALUES (@MedicationId, @PatientId, @PaymentDate, @Price, @Type, @Status, @PatientName)";
+
+                        using (MySqlCommand paymentCommand = new MySqlCommand(insertPaymentQuery, connection))
+                        {
+                            // Set parameters for the Payment query
+                            paymentCommand.Parameters.AddWithValue("@MedicationId", lastInsertedMedicationId);
+                            paymentCommand.Parameters.AddWithValue("@PatientId", txtId.Text);
+                            paymentCommand.Parameters.AddWithValue("@PaymentDate", DateTime.Now); 
+                            paymentCommand.Parameters.AddWithValue("@Price", txtPrice.Text);
+                            paymentCommand.Parameters.AddWithValue("@Type", "MEDICATION"); 
+                            paymentCommand.Parameters.AddWithValue("@Status", "PENDING"); 
+                            paymentCommand.Parameters.AddWithValue("@PatientName", txtName.Text);
+
+                            // Execute the INSERT query for Payment
+                            int paymentRowsAffected = paymentCommand.ExecuteNonQuery();
+
+                            if (paymentRowsAffected > 0)
+                            {
+                                MessageBox.Show("Payment information saved successfully.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to save payment information.");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to save medication data.");
+                    }
+                }
             }
-            connection.Open();
-            // Insert data into the "medication" table
-            string insertQuery = "INSERT INTO medication (date, patientId, noOfDays, dose, medicineId, patientName, medicineName) " +
-                                 "VALUES (@Date, @PatientId, @NoOfDays, @Dose, @MedicineId, @PatientName, @MedicineName)";
-            using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+            catch (Exception ex)
             {
-                command.Parameters.AddWithValue("@Date", txtDate.Value);
-                command.Parameters.AddWithValue("@PatientId", txtId.Text);
-                command.Parameters.AddWithValue("@NoOfDays", txtCount.Text);
-                command.Parameters.AddWithValue("@Dose", cmbDose.Text);
-                command.Parameters.AddWithValue("@MedicineId", txtIds.Text);
-                command.Parameters.AddWithValue("@PatientName", txtName.Text);
-                command.Parameters.AddWithValue("@MedicineName", txtNames.Text);
-
-                int rowsAffected = command.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
-                {
-                    MessageBox.Show("Data saved successfully!");
-                    // Clear textboxes or perform other actions as needed
-                }
-                else
-                {
-                    MessageBox.Show("Failed to save data.");
-                    table2_load();
-                }
-
-
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+                table2_load();
             }
         }
 

@@ -100,11 +100,11 @@ namespace HealthCarePlus
             //Application.Run(new Registration());
             //Application.Run(new Patient());
             //Application.Run(new PatientPop());
-            Application.Run(new Appointment());
+            //Application.Run(new Appointment());
             //Application.Run(new Staff());
             //Application.Run(new Theater());
             //Application.Run(new TheaterPop());
-            //Application.Run(new Medication());
+            Application.Run(new Medication());
             //Application.Run(new Schedule());
             //Application.Run(new Report());
             //Application.Run(new DashBoard());

@@ -150,6 +150,7 @@
             this.txtPName.Size = new System.Drawing.Size(291, 30);
             this.txtPName.TabIndex = 106;
             this.txtPName.Text = "  ";
+            this.txtPName.TextChanged += new System.EventHandler(this.txtPName_TextChanged);
             // 
             // label4
             // 

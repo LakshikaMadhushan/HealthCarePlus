@@ -374,7 +374,7 @@ namespace HealthCarePlus
                 MessageBox.Show("Please Fill All Required Field.");
                 return;
             }
-            TheaterPop theaterPop = new TheaterPop(txtId.Text,txtName.Text);
+            TheaterPop theaterPop = new TheaterPop(txtId.Text,txtName.Text,txtprice.Text);
             if (theaterPop == null)
             {
                 theaterPop.Parent = this;

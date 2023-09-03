@@ -29,9 +29,10 @@ namespace HealthCarePlus
             cmbStatus.Items.Add("INACTIVE");
             cmbStatus.Text = "Select Status";
             table_load();
+           
         }
 
-        public TheaterPop(string id,string name)
+        public TheaterPop(string id,string name,string price)
         {
             InitializeComponent();
             con = "datasource=localhost;port=3306;username=root;password='';database='mydatabases'";
@@ -44,6 +45,7 @@ namespace HealthCarePlus
             table_load();
             txtTId.Text = tId;
             txtType.Text = tName;
+            txtPrice.Text = price;
 
         }
 
@@ -103,41 +105,123 @@ namespace HealthCarePlus
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            //try
+            //{
+            //    if (string.IsNullOrEmpty(txtPId.Text) || string.IsNullOrEmpty(txtPName.Text) || string.IsNullOrEmpty(txtTId.Text)
+            //      || string.IsNullOrEmpty(txtCount.Text) || string.IsNullOrEmpty(cmbStatus.SelectedItem.ToString())
+            //      || string.IsNullOrEmpty(txtDate.Text) || string.IsNullOrEmpty(txtType.Text))
+            //    {
+            //        MessageBox.Show("Please Fill All Required Field.");
+            //        return;
+            //    }
+            //    connection.Open();
+
+            //    // Construct the INSERT query
+            //    string insertQuery = "INSERT INTO theaterDetail (date, patientName, price, status, type, theaterId, patientId) " +
+            //                         "VALUES (@Date, @PatientName, @Price, @Status, @Type, @TheaterId, @PatientId)";
+
+            //    // Create a MySqlCommand with the INSERT query and connection
+            //    using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+            //    {
+            //        // Set parameters for the query
+            //        command.Parameters.AddWithValue("@Date", txtDate.Value); 
+            //        command.Parameters.AddWithValue("@PatientName", txtPName.Text); 
+            //        command.Parameters.AddWithValue("@Price", txtPrice.Text);
+            //        command.Parameters.AddWithValue("@Status", cmbStatus.Text);
+            //        command.Parameters.AddWithValue("@Type",tName ); 
+            //        //command.Parameters.AddWithValue("@Type", txtType.Text); 
+            //        command.Parameters.AddWithValue("@TheaterId", tId); 
+            //        //command.Parameters.AddWithValue("@TheaterId", txtTId.Text); 
+            //        command.Parameters.AddWithValue("@PatientId", txtPId.Text);
+            //        // Execute the INSERT query
+            //        int rowsAffected = command.ExecuteNonQuery();
+
+            //        if (rowsAffected > 0)
+            //        {
+            //            MessageBox.Show("Theater Details information saved successfully.");
+
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Failed to save theater details information.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+            //finally
+            //{
+            //    connection.Close();
+            //    table_load();
+            //}
+
             try
             {
                 if (string.IsNullOrEmpty(txtPId.Text) || string.IsNullOrEmpty(txtPName.Text) || string.IsNullOrEmpty(txtTId.Text)
-                  || string.IsNullOrEmpty(txtCount.Text) || string.IsNullOrEmpty(cmbStatus.SelectedItem.ToString())
-                  || string.IsNullOrEmpty(txtDate.Text) || string.IsNullOrEmpty(txtType.Text))
+                    || string.IsNullOrEmpty(txtCount.Text) || string.IsNullOrEmpty(cmbStatus.Text.ToString())
+                    || string.IsNullOrEmpty(txtDate.Text) || string.IsNullOrEmpty(txtType.Text))
                 {
                     MessageBox.Show("Please Fill All Required Field.");
                     return;
                 }
+
                 connection.Open();
 
-                // Construct the INSERT query
-                string insertQuery = "INSERT INTO theaterDetail (date, patientName, price, status, type, theaterId, patientId) " +
-                                     "VALUES (@Date, @PatientName, @Price, @Status, @Type, @TheaterId, @PatientId)";
+                // Construct the INSERT query for TheaterDetail
+                string insertTheaterDetailQuery = "INSERT INTO theaterDetail (date, patientName, price, status, type, theaterId, patientId) " +
+                                                  "VALUES (@Date, @PatientName, @Price, @Status, @Type, @TheaterId, @PatientId)";
 
-                // Create a MySqlCommand with the INSERT query and connection
-                using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                // Create a MySqlCommand with the INSERT query for TheaterDetail and connection
+                using (MySqlCommand theaterDetailCommand = new MySqlCommand(insertTheaterDetailQuery, connection))
                 {
-                    // Set parameters for the query
-                    command.Parameters.AddWithValue("@Date", txtDate.Value); 
-                    command.Parameters.AddWithValue("@PatientName", txtPName.Text); 
-                    command.Parameters.AddWithValue("@Price", txtPrice.Text);
-                    command.Parameters.AddWithValue("@Status", cmbStatus.Text);
-                    command.Parameters.AddWithValue("@Type",tName ); 
-                    //command.Parameters.AddWithValue("@Type", txtType.Text); 
-                    command.Parameters.AddWithValue("@TheaterId", tId); 
-                    //command.Parameters.AddWithValue("@TheaterId", txtTId.Text); 
-                    command.Parameters.AddWithValue("@PatientId", txtPId.Text);
-                    // Execute the INSERT query
-                    int rowsAffected = command.ExecuteNonQuery();
+                    // Set parameters for the TheaterDetail query
+                    theaterDetailCommand.Parameters.AddWithValue("@Date", txtDate.Value);
+                    theaterDetailCommand.Parameters.AddWithValue("@PatientName", txtPName.Text);
+                    theaterDetailCommand.Parameters.AddWithValue("@Price", txtPrice.Text);
+                    theaterDetailCommand.Parameters.AddWithValue("@Status", cmbStatus.Text);
+                    theaterDetailCommand.Parameters.AddWithValue("@Type", txtType.Text);
+                    theaterDetailCommand.Parameters.AddWithValue("@TheaterId", txtTId.Text);
+                    theaterDetailCommand.Parameters.AddWithValue("@PatientId", txtPId.Text);
+
+                    // Execute the INSERT query for TheaterDetail
+                    int rowsAffected = theaterDetailCommand.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Theater Details information saved successfully.");
+                      
 
+                        // Retrieve the ID of the last inserted TheaterDetail
+                        long lastInsertedTheaterDetailId = theaterDetailCommand.LastInsertedId; // Use the correct method to get the last inserted ID (e.g., LastInsertedId or SELECT MAX(id) as lastId)
+
+                        // Now, you can save the Payment information linked to this TheaterDetail and Patient
+                        string insertPaymentQuery = "INSERT INTO payment (theaterDetailsId, patientId, paymentDate, price, type, status, patientName) " +
+                                                    "VALUES (@TheaterDetailId, @PatientId, @PaymentDate, @Price, @Type, @Status, @PatientName)";
+
+                        using (MySqlCommand paymentCommand = new MySqlCommand(insertPaymentQuery, connection))
+                        {
+                            // Set parameters for the Payment query
+                            paymentCommand.Parameters.AddWithValue("@TheaterDetailId", lastInsertedTheaterDetailId);
+                            paymentCommand.Parameters.AddWithValue("@PatientId", txtPId.Text);
+                            paymentCommand.Parameters.AddWithValue("@PaymentDate", DateTime.Now); // Use the current date
+                            paymentCommand.Parameters.AddWithValue("@Price", txtPrice.Text);
+                            paymentCommand.Parameters.AddWithValue("@Type", "THEATER");
+                            paymentCommand.Parameters.AddWithValue("@Status", "PENDING");
+                            paymentCommand.Parameters.AddWithValue("@PatientName", txtPName.Text);
+
+                            // Execute the INSERT query for Payment
+                            int paymentRowsAffected = paymentCommand.ExecuteNonQuery();
+
+                            if (paymentRowsAffected > 0)
+                            {
+                                MessageBox.Show("Payment information saved successfully.");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Failed to save payment information.");
+                            }
+                        }
                     }
                     else
                     {
