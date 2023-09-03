@@ -21,17 +21,20 @@ namespace HealthCarePlus
     {
         string con;
         MySqlConnection connection;
+        DashBoardCountService dashboardCountService ;
         public DashBoard()
         {
             InitializeComponent();
 
             con = "datasource=localhost;port=3306;username=root;password='';database='mydatabases'";
             connection = new MySqlConnection(con);
+            dashboardCountService = new DashBoardCountService(connection);
             GetActiveDoctorCount();
             GetPatientCount();
             GetStaffCount();
             GetActiveRoomCount();
             GetTodayAppointment();
+
         }
 
         private void btnReport_Click(object sender, EventArgs e)
@@ -188,179 +191,190 @@ namespace HealthCarePlus
             //lblDoctor.Text = userCount.ToString();
 
 
-            DoctorCountService doctorCountService = new DoctorCountService(connection);
-            int doctorCount = doctorCountService.GetActiveDoctorCount();
+          
+            int doctorCount = dashboardCountService.GetActiveDoctorCount();
             lblDoctor.Text = doctorCount.ToString();
 
         }
         private void GetPatientCount()
         {
-            int userCount = 0;
+            //int userCount = 0;
 
-            try
-            {
-                connection.Open();
+            //try
+            //{
+            //    connection.Open();
 
-                // Create the SQL SELECT query
-                string selectQuery = "SELECT COUNT(*) AS userCount " +
-                                     "FROM patient";
+            //    // Create the SQL SELECT query
+            //    string selectQuery = "SELECT COUNT(*) AS userCount " +
+            //                         "FROM patient";
 
-                using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
-                {
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            userCount = Convert.ToInt32(reader["userCount"]);
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
+            //    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+            //    {
+            //        using (MySqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            if (reader.Read())
+            //            {
+            //                userCount = Convert.ToInt32(reader["userCount"]);
+            //            }
+            //        }
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+            //}
 
-            lblPatient.Text = userCount.ToString();
+            //lblPatient.Text = userCount.ToString();
+
+            int patientCount = dashboardCountService.GetPatientCount();
+            lblPatient.Text = patientCount.ToString();
 
         }
 
         private void GetStaffCount()
         {
-            int userCount = 0;
+            //int userCount = 0;
 
-            try
-            {
-                connection.Open();
+            //try
+            //{
+            //    connection.Open();
 
-                // Create the SQL SELECT query
-                string selectQuery = "SELECT COUNT(*) AS userCount " +
-                                         "FROM user " +
-                                         "WHERE status = 'ACTIVE' AND role NOT IN ('DOCTOR')";
+            //    // Create the SQL SELECT query
+            //    string selectQuery = "SELECT COUNT(*) AS userCount " +
+            //                             "FROM user " +
+            //                             "WHERE status = 'ACTIVE' AND role NOT IN ('DOCTOR')";
 
-                using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
-                {
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            userCount = Convert.ToInt32(reader["userCount"]);
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
+            //    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+            //    {
+            //        using (MySqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            if (reader.Read())
+            //            {
+            //                userCount = Convert.ToInt32(reader["userCount"]);
+            //            }
+            //        }
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+            //}
 
-            lblStaff.Text = userCount.ToString();
+            //lblStaff.Text = userCount.ToString();
+            int staffCount = dashboardCountService.GetStaffCount();
+            lblStaff.Text = staffCount.ToString();
 
         }
 
         private void GetActiveRoomCount()
         {
-            int userCount = 0;
+            //int userCount = 0;
 
-            try
-            {
-                connection.Open();
+            //try
+            //{
+            //    connection.Open();
 
-                // Create the SQL SELECT query
-                string selectQuery = "SELECT COUNT(*) AS count " +
-                                     "FROM theater WHERE status='ACTIVE' AND type='ROOM'";
+            //    // Create the SQL SELECT query
+            //    string selectQuery = "SELECT COUNT(*) AS count " +
+            //                         "FROM theater WHERE status='ACTIVE' AND type='ROOM'";
 
-                using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
-                {
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            userCount = Convert.ToInt32(reader["count"]);
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
+            //    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+            //    {
+            //        using (MySqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            if (reader.Read())
+            //            {
+            //                userCount = Convert.ToInt32(reader["count"]);
+            //            }
+            //        }
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+            //}
 
-            lblRoom.Text = userCount.ToString();
+            //lblRoom.Text = userCount.ToString();
+            int roomCount = dashboardCountService.GetActiveRoomCount();
+            lblRoom.Text = roomCount.ToString();
 
         }
         
         private void GetTodayAppointment()
         {
-            int userCount = 0;
+            //int userCount = 0;
 
-            try
-            {
-                connection.Open();
+            //try
+            //{
+            //    connection.Open();
 
-                // Get the current date
-                DateTime today = DateTime.Today;
+            //    // Get the current date
+            //    DateTime today = DateTime.Today;
 
 
-                // Create the SQL SELECT query
-                string selectQuery = "SELECT COUNT(*) AS count " +
-                                     "FROM appointment WHERE status='ACTIVE' AND  DATE(date) = @TodayDate";
+            //    // Create the SQL SELECT query
+            //    string selectQuery = "SELECT COUNT(*) AS count " +
+            //                         "FROM appointment WHERE status='ACTIVE' AND  DATE(date) = @TodayDate";
 
-                using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@TodayDate", today);
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            userCount = Convert.ToInt32(reader["count"]);
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
+            //    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+            //    {
+            //        command.Parameters.AddWithValue("@TodayDate", today);
+            //        using (MySqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            if (reader.Read())
+            //            {
+            //                userCount = Convert.ToInt32(reader["count"]);
+            //            }
+            //        }
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+            //}
 
-            lblAppointmnet.Text = userCount.ToString();
+            //lblAppointmnet.Text = userCount.ToString();
+            int appointmentCount = dashboardCountService.GetTodayAppointmentCount();
+            lblAppointmnet.Text = appointmentCount.ToString();
 
         }
 
         private void GetActiveTheaterCount()
         {
-            int userCount = 0;
+            //int userCount = 0;
 
-            try
-            {
-                connection.Open();
+            //try
+            //{
+            //    connection.Open();
 
-                // Create the SQL SELECT query
-                string selectQuery = "SELECT COUNT(*) AS count " +
-                                     "FROM theater WHERE status='ACTIVE' AND type='THEATER'";
+            //    // Create the SQL SELECT query
+            //    string selectQuery = "SELECT COUNT(*) AS count " +
+            //                         "FROM theater WHERE status='ACTIVE' AND type='THEATER'";
 
-                using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
-                {
-                    using (MySqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            userCount = Convert.ToInt32(reader["count"]);
-                        }
-                    }
-                }
-                connection.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
+            //    using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+            //    {
+            //        using (MySqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            if (reader.Read())
+            //            {
+            //                userCount = Convert.ToInt32(reader["count"]);
+            //            }
+            //        }
+            //    }
+            //    connection.Close();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+            //}
 
-            lblTheater.Text = userCount.ToString();
+            //lblTheater.Text = userCount.ToString();
+            int theaterCount = dashboardCountService.GetActiveTheaterCount();
+            lblAppointmnet.Text = theaterCount.ToString();
 
         }
 

@@ -104,14 +104,14 @@ namespace HealthCarePlus
             //Application.Run(new Staff());
             //Application.Run(new Theater());
             //Application.Run(new TheaterPop());
-            Application.Run(new Bill());
+            //Application.Run(new Bill());
             //Application.Run(new Medication());
             //Application.Run(new Schedule());
             //Application.Run(new Report());
-            //Application.Run(new DashBoard());
+            Application.Run(new DashBoard());
             //Application.Run(new PatientPop());
             //Application.Run(new Resource());
-            Application.Run(new Payment());
+            //Application.Run(new Payment());
         }
     }
 }

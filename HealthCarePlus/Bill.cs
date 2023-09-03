@@ -87,53 +87,54 @@ namespace HealthCarePlus
 
         }
 
-        private void GeneratePDF()
-        {
-            try
-            {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "PDF File|*.pdf";
-                saveFileDialog1.Title = "Save PDF File";
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    string pdfFilePath = saveFileDialog1.FileName;
-
-                    PdfWriter writer = new PdfWriter(pdfFilePath);
-                    iText.Kernel.Pdf.PdfDocument pdf = new iText.Kernel.Pdf.PdfDocument(writer);
-                    Document document = new Document(pdf);
-                    iText.Layout.Element.Table table = new iText.Layout.Element.Table(dataGridView1.Columns.Count);
-
-                    // Add headers from the DataGridView to the PDF table
-                    foreach (DataGridViewColumn column in dataGridView1.Columns)
-                    {
-                        table.AddCell(new Cell().Add(new Paragraph(column.HeaderText)));
-                    }
-
-                    // Add rows and data from the DataGridView to the PDF table
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
-                    {
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            table.AddCell(new Cell().Add(new Paragraph(cell.Value.ToString())));
-                        }
-                    }
-
-                    document.Add(table);
-                    document.Close();
-                    MessageBox.Show("PDF saved successfully.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
         private void btnBill_Click(object sender, EventArgs e)
         {
             GenerateAndDownloadPDF();
         }
+
+        //private void GeneratePDF()
+        //{
+        //    try
+        //    {
+        //        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+        //        saveFileDialog1.Filter = "PDF File|*.pdf";
+        //        saveFileDialog1.Title = "Save PDF File";
+
+        //        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+        //        {
+        //            string pdfFilePath = saveFileDialog1.FileName;
+
+        //            PdfWriter writer = new PdfWriter(pdfFilePath);
+        //            iText.Kernel.Pdf.PdfDocument pdf = new iText.Kernel.Pdf.PdfDocument(writer);
+        //            Document document = new Document(pdf);
+        //            iText.Layout.Element.Table table = new iText.Layout.Element.Table(dataGridView1.Columns.Count);
+
+        //            // Add headers from the DataGridView to the PDF table
+        //            foreach (DataGridViewColumn column in dataGridView1.Columns)
+        //            {
+        //                table.AddCell(new Cell().Add(new Paragraph(column.HeaderText)));
+        //            }
+
+        //            // Add rows and data from the DataGridView to the PDF table
+        //            foreach (DataGridViewRow row in dataGridView1.Rows)
+        //            {
+        //                foreach (DataGridViewCell cell in row.Cells)
+        //                {
+        //                    table.AddCell(new Cell().Add(new Paragraph(cell.Value.ToString())));
+        //                }
+        //            }
+
+        //            document.Add(table);
+        //            document.Close();
+        //            MessageBox.Show("PDF saved successfully.");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Error: " + ex.Message);
+        //    }
+        //}
+
         private void GenerateAndDownloadPDF()
         {
             // Create a new PDF document
@@ -170,9 +171,7 @@ namespace HealthCarePlus
             }
         }
 
-        private void txtTotal_Click(object sender, EventArgs e)
-        {
 
-        }
+
     }
 }

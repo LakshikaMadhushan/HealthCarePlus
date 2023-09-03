@@ -372,9 +372,10 @@
             // 
             // picLogout
             // 
-            this.picLogout.Location = new System.Drawing.Point(976, 10);
+            this.picLogout.Image = ((System.Drawing.Image)(resources.GetObject("picLogout.Image")));
+            this.picLogout.Location = new System.Drawing.Point(998, -1);
             this.picLogout.Name = "picLogout";
-            this.picLogout.Size = new System.Drawing.Size(100, 50);
+            this.picLogout.Size = new System.Drawing.Size(78, 73);
             this.picLogout.TabIndex = 1;
             this.picLogout.TabStop = false;
             this.picLogout.Click += new System.EventHandler(this.picLogout_Click);

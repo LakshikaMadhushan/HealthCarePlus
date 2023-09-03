@@ -318,7 +318,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="model\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Pdfium.Net.SDK.4.85.2704\build\Pdfium.Net.SDK.targets" Condition="Exists('..\packages\Pdfium.Net.SDK.4.85.2704\build\Pdfium.Net.SDK.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

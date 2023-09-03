@@ -71,7 +71,6 @@
             this.txtTotal.Size = new System.Drawing.Size(21, 29);
             this.txtTotal.TabIndex = 2;
             this.txtTotal.Text = "-";
-            this.txtTotal.Click += new System.EventHandler(this.txtTotal_Click);
             // 
             // btnBill
             // 
