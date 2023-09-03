@@ -31,29 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment));
             this.panel3 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button12 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnPSearch = new System.Windows.Forms.Button();
+            this.txtPId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.address1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NIC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,6 +62,8 @@
             this.btnAppointment = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegistration = new System.Windows.Forms.Button();
+            this.txtPDate = new System.Windows.Forms.DateTimePicker();
+            this.cmbType = new System.Windows.Forms.ComboBox();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -80,30 +74,32 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.cmbType);
+            this.panel3.Controls.Add(this.txtPDate);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.button12);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.btnPSearch);
+            this.panel3.Controls.Add(this.txtPId);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Controls.Add(this.textBox3);
+            this.panel3.Controls.Add(this.txtPName);
             this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.textBox2);
+            this.panel3.Controls.Add(this.txtPrice);
             this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.comboBox2);
+            this.panel3.Controls.Add(this.cmbStatus);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.txtEmail);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.txtId);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.txtName);
-            this.panel3.Controls.Add(this.button11);
+            this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnRegister);
             this.panel3.Location = new System.Drawing.Point(264, 104);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1098, 579);
+            this.panel3.Size = new System.Drawing.Size(1098, 587);
             this.panel3.TabIndex = 22;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label2
             // 
@@ -115,61 +111,63 @@
             this.label2.TabIndex = 110;
             this.label2.Text = "Patient Name";
             // 
-            // button12
+            // btnPSearch
             // 
-            this.button12.BackColor = System.Drawing.Color.Gold;
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.ForeColor = System.Drawing.SystemColors.Window;
-            this.button12.Location = new System.Drawing.Point(389, 268);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(100, 32);
-            this.button12.TabIndex = 109;
-            this.button12.Text = "Search";
-            this.button12.UseVisualStyleBackColor = false;
+            this.btnPSearch.BackColor = System.Drawing.Color.Gold;
+            this.btnPSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPSearch.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnPSearch.Location = new System.Drawing.Point(389, 210);
+            this.btnPSearch.Name = "btnPSearch";
+            this.btnPSearch.Size = new System.Drawing.Size(100, 32);
+            this.btnPSearch.TabIndex = 109;
+            this.btnPSearch.Text = "Search";
+            this.btnPSearch.UseVisualStyleBackColor = false;
+            this.btnPSearch.Click += new System.EventHandler(this.btnPSearch_Click);
             // 
-            // textBox1
+            // txtPId
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(198, 270);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 30);
-            this.textBox1.TabIndex = 108;
+            this.txtPId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPId.Location = new System.Drawing.Point(198, 212);
+            this.txtPId.Name = "txtPId";
+            this.txtPId.Size = new System.Drawing.Size(185, 30);
+            this.txtPId.TabIndex = 108;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(49, 266);
+            this.label6.Location = new System.Drawing.Point(49, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 25);
             this.label6.TabIndex = 107;
             this.label6.Text = "Patient ID";
             // 
-            // textBox3
+            // txtPName
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(722, 36);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(291, 30);
-            this.textBox3.TabIndex = 106;
+            this.txtPName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPName.Location = new System.Drawing.Point(722, 36);
+            this.txtPName.Name = "txtPName";
+            this.txtPName.Size = new System.Drawing.Size(291, 30);
+            this.txtPName.TabIndex = 106;
+            this.txtPName.Text = "  ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(49, 199);
+            this.label4.Location = new System.Drawing.Point(49, 152);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 25);
             this.label4.TabIndex = 105;
             this.label4.Text = "Price";
             // 
-            // textBox2
+            // txtPrice
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(198, 196);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(291, 30);
-            this.textBox2.TabIndex = 104;
+            this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrice.Location = new System.Drawing.Point(198, 149);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(291, 30);
+            this.txtPrice.TabIndex = 104;
             // 
             // label9
             // 
@@ -181,15 +179,15 @@
             this.label9.TabIndex = 103;
             this.label9.Text = "Type";
             // 
-            // comboBox2
+            // cmbStatus
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.ItemHeight = 25;
-            this.comboBox2.Location = new System.Drawing.Point(722, 83);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(291, 33);
-            this.comboBox2.TabIndex = 102;
+            this.cmbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbStatus.FormattingEnabled = true;
+            this.cmbStatus.ItemHeight = 25;
+            this.cmbStatus.Location = new System.Drawing.Point(722, 83);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(291, 33);
+            this.cmbStatus.TabIndex = 102;
             // 
             // label8
             // 
@@ -205,19 +203,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(49, 149);
+            this.label5.Location = new System.Drawing.Point(573, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(135, 25);
             this.label5.TabIndex = 98;
             this.label5.Text = "Payment Date";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(198, 145);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(291, 30);
-            this.txtEmail.TabIndex = 97;
             // 
             // btnSearch
             // 
@@ -230,6 +220,7 @@
             this.btnSearch.TabIndex = 96;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtId
             // 
@@ -249,113 +240,72 @@
             this.label3.TabIndex = 94;
             this.label3.Text = "Payment ID";
             // 
-            // txtName
+            // btnUpdate
             // 
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(198, 91);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(291, 30);
-            this.txtName.TabIndex = 92;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.DarkOrange;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.ForeColor = System.Drawing.SystemColors.Window;
-            this.button11.Location = new System.Drawing.Point(578, 259);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(138, 41);
-            this.button11.TabIndex = 89;
-            this.button11.Text = "Update";
-            this.button11.UseVisualStyleBackColor = false;
+            this.btnUpdate.BackColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUpdate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnUpdate.Location = new System.Drawing.Point(578, 208);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(138, 34);
+            this.btnUpdate.TabIndex = 89;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.name,
-            this.address1,
-            this.Contact,
-            this.NIC,
-            this.gender});
-            this.dataGridView1.Location = new System.Drawing.Point(129, 332);
+            this.dataGridView1.Location = new System.Drawing.Point(54, 271);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(826, 216);
+            this.dataGridView1.Size = new System.Drawing.Size(959, 284);
             this.dataGridView1.TabIndex = 88;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Width = 75;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Type";
-            this.name.MinimumWidth = 6;
-            this.name.Name = "name";
-            this.name.Width = 150;
-            // 
-            // address1
-            // 
-            this.address1.HeaderText = "Payment Date";
-            this.address1.MinimumWidth = 6;
-            this.address1.Name = "address1";
-            this.address1.Width = 125;
-            // 
-            // Contact
-            // 
-            this.Contact.HeaderText = "Price";
-            this.Contact.MinimumWidth = 6;
-            this.Contact.Name = "Contact";
-            this.Contact.Width = 125;
-            // 
-            // NIC
-            // 
-            this.NIC.HeaderText = "Patient Date";
-            this.NIC.MinimumWidth = 6;
-            this.NIC.Name = "NIC";
-            this.NIC.Width = 150;
-            // 
-            // gender
-            // 
-            this.gender.HeaderText = "Status";
-            this.gender.MinimumWidth = 6;
-            this.gender.Name = "gender";
-            this.gender.Width = 150;
             // 
             // btnClear
             // 
-            this.btnClear.BackColor = System.Drawing.Color.Gold;
+            this.btnClear.BackColor = System.Drawing.Color.White;
+            this.btnClear.FlatAppearance.BorderColor = System.Drawing.Color.Gold;
+            this.btnClear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnClear.Location = new System.Drawing.Point(875, 259);
+            this.btnClear.ForeColor = System.Drawing.Color.Gold;
+            this.btnClear.Location = new System.Drawing.Point(875, 208);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(138, 41);
+            this.btnClear.Size = new System.Drawing.Size(138, 34);
             this.btnClear.TabIndex = 87;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnRegister
             // 
-            this.btnRegister.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnRegister.BackColor = System.Drawing.Color.White;
+            this.btnRegister.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.btnRegister.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.btnRegister.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegister.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnRegister.Location = new System.Drawing.Point(722, 260);
+            this.btnRegister.ForeColor = System.Drawing.Color.Green;
+            this.btnRegister.Location = new System.Drawing.Point(721, 208);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(151, 40);
+            this.btnRegister.Size = new System.Drawing.Size(151, 34);
             this.btnRegister.TabIndex = 86;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(264, 12);
             this.panel2.Name = "panel2";
@@ -376,6 +326,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.BtnMedication);
             this.panel1.Controls.Add(this.btnReport);
             this.panel1.Controls.Add(this.btnResource);
@@ -398,7 +349,7 @@
             this.BtnMedication.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnMedication.ForeColor = System.Drawing.Color.White;
             this.BtnMedication.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnMedication.Location = new System.Drawing.Point(5, 515);
+            this.BtnMedication.Location = new System.Drawing.Point(4, 515);
             this.BtnMedication.Name = "BtnMedication";
             this.BtnMedication.Size = new System.Drawing.Size(217, 52);
             this.BtnMedication.TabIndex = 27;
@@ -412,7 +363,7 @@
             this.btnReport.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.ForeColor = System.Drawing.Color.White;
             this.btnReport.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnReport.Location = new System.Drawing.Point(5, 617);
+            this.btnReport.Location = new System.Drawing.Point(4, 617);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(217, 52);
             this.btnReport.TabIndex = 26;
@@ -541,10 +492,28 @@
             this.btnRegistration.UseVisualStyleBackColor = false;
             this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
+            // txtPDate
+            // 
+            this.txtPDate.Location = new System.Drawing.Point(722, 149);
+            this.txtPDate.Name = "txtPDate";
+            this.txtPDate.Size = new System.Drawing.Size(291, 22);
+            this.txtPDate.TabIndex = 113;
+            // 
+            // cmbType
+            // 
+            this.cmbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.ItemHeight = 25;
+            this.cmbType.Location = new System.Drawing.Point(198, 92);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(291, 33);
+            this.cmbType.TabIndex = 114;
+            // 
             // Payment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1382, 703);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -567,17 +536,15 @@
 
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnRegister;
@@ -585,16 +552,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnPSearch;
+        private System.Windows.Forms.TextBox txtPId;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn address1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NIC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
+        private System.Windows.Forms.TextBox txtPName;
         private System.Windows.Forms.Button BtnMedication;
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnResource;
@@ -606,5 +567,7 @@
         private System.Windows.Forms.Button btnAppointment;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnRegistration;
+        private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.DateTimePicker txtPDate;
     }
 }

@@ -321,6 +321,7 @@
             this.dateBirth.Name = "dateBirth";
             this.dateBirth.Size = new System.Drawing.Size(291, 22);
             this.dateBirth.TabIndex = 97;
+            this.dateBirth.ValueChanged += new System.EventHandler(this.dateBirth_ValueChanged);
             // 
             // btnSearch
             // 

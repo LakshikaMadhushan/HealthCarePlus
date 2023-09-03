@@ -368,13 +368,23 @@ namespace HealthCarePlus
 
         private void btnPatientReport_Click(object sender, EventArgs e)
         {
-            PatientPop patientPop = new PatientPop();
+            if (string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("Please Fill All Required Field.");
+                return;
+            }
+            PatientPop patientPop = new PatientPop(txtId.Text,txtName.Text);
             if (patientPop == null)
             {
                 patientPop.Parent = this;
             }
             patientPop.Show();
             //this.Hide();
+        }
+
+        private void dateBirth_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

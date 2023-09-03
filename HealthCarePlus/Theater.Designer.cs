@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Theater));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtSpecific = new System.Windows.Forms.TextBox();
+            this.cmbType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtprice = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -59,10 +63,7 @@
             this.btnAppointment = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegistration = new System.Windows.Forms.Button();
-            this.cmbType = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtSpecific = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -73,6 +74,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnAdd);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.txtSpecific);
             this.panel3.Controls.Add(this.cmbType);
@@ -97,6 +99,48 @@
             this.panel3.Size = new System.Drawing.Size(1098, 579);
             this.panel3.TabIndex = 13;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(572, 150);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(123, 25);
+            this.label6.TabIndex = 89;
+            this.label6.Text = "Specification";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // txtSpecific
+            // 
+            this.txtSpecific.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSpecific.Location = new System.Drawing.Point(721, 147);
+            this.txtSpecific.Name = "txtSpecific";
+            this.txtSpecific.Size = new System.Drawing.Size(291, 30);
+            this.txtSpecific.TabIndex = 88;
+            this.txtSpecific.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // cmbType
+            // 
+            this.cmbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbType.FormattingEnabled = true;
+            this.cmbType.ItemHeight = 25;
+            this.cmbType.Location = new System.Drawing.Point(721, 91);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Size = new System.Drawing.Size(291, 33);
+            this.cmbType.TabIndex = 87;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(570, 94);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 25);
+            this.label2.TabIndex = 86;
+            this.label2.Text = "Type";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -220,11 +264,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(38, 260);
+            this.dataGridView1.Location = new System.Drawing.Point(38, 290);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(974, 286);
+            this.dataGridView1.Size = new System.Drawing.Size(974, 256);
             this.dataGridView1.TabIndex = 44;
             // 
             // btnClear
@@ -440,47 +484,18 @@
             this.btnRegistration.UseVisualStyleBackColor = false;
             this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
-            // cmbType
+            // btnAdd
             // 
-            this.cmbType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbType.FormattingEnabled = true;
-            this.cmbType.ItemHeight = 25;
-            this.cmbType.Location = new System.Drawing.Point(721, 91);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(291, 33);
-            this.cmbType.TabIndex = 87;
-            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(570, 94);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 25);
-            this.label2.TabIndex = 86;
-            this.label2.Text = "Type";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(572, 150);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(123, 25);
-            this.label6.TabIndex = 89;
-            this.label6.Text = "Specification";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // txtSpecific
-            // 
-            this.txtSpecific.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSpecific.Location = new System.Drawing.Point(721, 147);
-            this.txtSpecific.Name = "txtSpecific";
-            this.txtSpecific.Size = new System.Drawing.Size(291, 30);
-            this.txtSpecific.TabIndex = 88;
-            this.txtSpecific.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.btnAdd.BackColor = System.Drawing.Color.Green;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnAdd.Location = new System.Drawing.Point(38, 244);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(151, 40);
+            this.btnAdd.TabIndex = 90;
+            this.btnAdd.Text = "Add Patient";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // Theater
             // 
@@ -541,5 +556,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtSpecific;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

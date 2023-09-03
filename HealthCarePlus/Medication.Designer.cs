@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Medication));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnMSearch = new System.Windows.Forms.Button();
+            this.txtMId = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCount = new System.Windows.Forms.TextBox();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -67,7 +71,6 @@
             this.btnAppointment = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegistration = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,6 +82,9 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnMSearch);
+            this.panel3.Controls.Add(this.txtMId);
+            this.panel3.Controls.Add(this.label10);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.txtCount);
@@ -108,11 +114,50 @@
             this.panel3.Size = new System.Drawing.Size(1098, 579);
             this.panel3.TabIndex = 19;
             // 
+            // btnMSearch
+            // 
+            this.btnMSearch.BackColor = System.Drawing.Color.Gold;
+            this.btnMSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMSearch.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnMSearch.Location = new System.Drawing.Point(410, 280);
+            this.btnMSearch.Name = "btnMSearch";
+            this.btnMSearch.Size = new System.Drawing.Size(100, 32);
+            this.btnMSearch.TabIndex = 147;
+            this.btnMSearch.Text = "Search";
+            this.btnMSearch.UseVisualStyleBackColor = false;
+            this.btnMSearch.Click += new System.EventHandler(this.btnMSearch_Click);
+            // 
+            // txtMId
+            // 
+            this.txtMId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMId.Location = new System.Drawing.Point(219, 280);
+            this.txtMId.Name = "txtMId";
+            this.txtMId.Size = new System.Drawing.Size(185, 30);
+            this.txtMId.TabIndex = 146;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(70, 283);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(131, 25);
+            this.label10.TabIndex = 145;
+            this.label10.Text = "Medication ID";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel4.Location = new System.Drawing.Point(-1, 149);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1103, 10);
+            this.panel4.TabIndex = 142;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(70, 271);
+            this.label4.Location = new System.Drawing.Point(596, 281);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 25);
             this.label4.TabIndex = 140;
@@ -121,7 +166,7 @@
             // txtCount
             // 
             this.txtCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCount.Location = new System.Drawing.Point(219, 269);
+            this.txtCount.Location = new System.Drawing.Point(742, 278);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(291, 30);
             this.txtCount.TabIndex = 141;
@@ -131,12 +176,13 @@
             this.btnUpdate.BackColor = System.Drawing.Color.DarkOrange;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnUpdate.Location = new System.Drawing.Point(594, 256);
+            this.btnUpdate.Location = new System.Drawing.Point(591, 321);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(136, 40);
             this.btnUpdate.TabIndex = 139;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnReg
             // 
@@ -162,6 +208,7 @@
             this.btnSearch.TabIndex = 137;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtId
             // 
@@ -177,9 +224,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(67, 172);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 25);
+            this.label5.Size = new System.Drawing.Size(96, 25);
             this.label5.TabIndex = 135;
-            this.label5.Text = "ID";
+            this.label5.Text = "Patient ID";
             // 
             // label9
             // 
@@ -225,7 +272,7 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(740, 169);
+            this.txtDate.Location = new System.Drawing.Point(742, 169);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(291, 22);
             this.txtDate.TabIndex = 127;
@@ -235,7 +282,7 @@
             this.cmbDose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDose.FormattingEnabled = true;
             this.cmbDose.ItemHeight = 25;
-            this.cmbDose.Location = new System.Drawing.Point(740, 217);
+            this.cmbDose.Location = new System.Drawing.Point(742, 217);
             this.cmbDose.Name = "cmbDose";
             this.cmbDose.Size = new System.Drawing.Size(291, 33);
             this.cmbDose.TabIndex = 123;
@@ -313,11 +360,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(75, 322);
+            this.dataGridView1.Location = new System.Drawing.Point(75, 368);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(956, 225);
+            this.dataGridView1.Size = new System.Drawing.Size(956, 179);
             this.dataGridView1.TabIndex = 112;
             // 
             // btnClear
@@ -325,7 +372,7 @@
             this.btnClear.BackColor = System.Drawing.Color.Gold;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnClear.Location = new System.Drawing.Point(893, 256);
+            this.btnClear.Location = new System.Drawing.Point(890, 321);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(138, 41);
             this.btnClear.TabIndex = 111;
@@ -338,12 +385,13 @@
             this.btnRegister.BackColor = System.Drawing.Color.LimeGreen;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnRegister.Location = new System.Drawing.Point(736, 256);
+            this.btnRegister.Location = new System.Drawing.Point(733, 321);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(151, 40);
             this.btnRegister.TabIndex = 110;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // panel2
             // 
@@ -530,15 +578,6 @@
             this.btnRegistration.UseVisualStyleBackColor = false;
             this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel4.Location = new System.Drawing.Point(-1, 149);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1103, 10);
-            this.panel4.TabIndex = 142;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
-            // 
             // Medication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -603,5 +642,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNames;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnMSearch;
+        private System.Windows.Forms.TextBox txtMId;
+        private System.Windows.Forms.Label label10;
     }
 }

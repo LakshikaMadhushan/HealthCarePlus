@@ -366,5 +366,21 @@ namespace HealthCarePlus
             cmbType.Text = "";
             txtId.Text = "";
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtId.Text))
+            {
+                MessageBox.Show("Please Fill All Required Field.");
+                return;
+            }
+            TheaterPop theaterPop = new TheaterPop(txtId.Text,txtName.Text);
+            if (theaterPop == null)
+            {
+                theaterPop.Parent = this;
+            }
+            theaterPop.Show();
+            //this.Hide();
+        }
     }
 }
