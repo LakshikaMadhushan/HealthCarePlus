@@ -120,13 +120,6 @@ namespace HealthCarePlus
             }
             appointment.Show();
             this.Hide();
-            Registration registration = new Registration();
-            if (registration == null)
-            {
-                registration.Parent = this;
-            }
-            registration.Show();
-            this.Hide();
         }
 
         private void btnRegistration_Click(object sender, EventArgs e)

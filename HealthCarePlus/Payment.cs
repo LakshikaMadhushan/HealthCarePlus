@@ -123,7 +123,7 @@ namespace HealthCarePlus
 
         private void btnRegistration_Click(object sender, EventArgs e)
         {
-            Registration registration = new Registration();
+           
             Patient patient = new Patient();
             if (patient == null)
             {

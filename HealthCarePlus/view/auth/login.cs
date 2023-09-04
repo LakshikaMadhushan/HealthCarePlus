@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using HealthCarePlus.view;
+using HealthCarePlus.service;
 
 namespace HealthCarePlus
 {
@@ -17,13 +19,15 @@ namespace HealthCarePlus
     public partial class login : Form
     {
         string con;
+        string role;
         MySqlConnection connection;
+        Auth auth;
         public login()
         {
             InitializeComponent();
             con = "datasource=localhost;port=3306;username=root;password='';database='mydatabases'";
-            //con = "Server=localhost;Database=mydatabase;Uid=root;Pwd='';";
             connection = new MySqlConnection(con);
+            auth = new Auth();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -63,11 +67,12 @@ namespace HealthCarePlus
 
             string username = userNametxt.Text;
             string password = passwordtxt.Text;
-           
+
             if (ValidateUser(username, password))
             {
                 MessageBox.Show("Login successful!");
                 // You can open your main application form or perform other actions here.
+                if (role=="ADMIN") { 
                 DashBoard dashBoard = new DashBoard();
                 if (dashBoard == null)
                 {
@@ -75,6 +80,21 @@ namespace HealthCarePlus
                 }
                 dashBoard.Show();
                 this.Hide();
+            }
+                else if (role=="STAFF")
+            {
+                    DashBoardStaff dashBoard = new DashBoardStaff();
+                    if (dashBoard == null)
+                    {
+                        dashBoard.Parent = this;
+                    }
+                    dashBoard.Show();
+                    this.Hide();
+             }
+                else
+             {
+                    MessageBox.Show("This user haven't portal yet..");
+             }
             }
             else
             {
@@ -96,28 +116,45 @@ namespace HealthCarePlus
             {
                 connection.Open();
 
-                string hashedPassword = HashPassword(password);
+                string hashedPassword = auth.HashPassword(password);
 
                 //userNametxt.Text = hashedPassword;
 
-                string query = "SELECT COUNT(*) FROM User WHERE email = @username AND Password = @password";
+                string query = "SELECT COUNT(*),role FROM User WHERE email = @username AND Password = @password";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.AddWithValue("@username", username);
                 command.Parameters.AddWithValue("@password", hashedPassword);
+                int count = 0;
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        count = Convert.ToInt32(reader[0]);
+                        string roles = reader["role"].ToString();
 
-                int count = Convert.ToInt32(command.ExecuteScalar());
+                        connection.Close();
+
+                        if (count > 0)
+                        {
+                            if (roles == "ADMIN")
+                            {
+                                role= "ADMIN";
+                            }
+                            else if (roles == "STAFF")
+                            {
+                                role = "STAFF";
+                            }
+                        }
+                    }
+                }
+
+
+                //int count = Convert.ToInt32(command.ExecuteScalar());
                 connection.Close();
                 return count > 0;
                 
             }
         }
-        public static string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-            }
-        }
+       
     }
 }

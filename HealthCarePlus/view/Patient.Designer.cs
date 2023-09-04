@@ -245,7 +245,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(255, 12);
+            this.panel2.Location = new System.Drawing.Point(255, 14);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1098, 72);
             this.panel2.TabIndex = 1;
@@ -286,7 +286,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.txtName);
-            this.panel3.Location = new System.Drawing.Point(255, 103);
+            this.panel3.Location = new System.Drawing.Point(255, 105);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1098, 579);
             this.panel3.TabIndex = 1;

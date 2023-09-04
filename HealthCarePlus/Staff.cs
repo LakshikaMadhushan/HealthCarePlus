@@ -22,7 +22,7 @@ namespace HealthCarePlus
             InitializeComponent();
             
             cmdRole.Items.Add("ADMIN");
-            cmdRole.Items.Add("RECIPTIONALIST");
+            cmdRole.Items.Add("STAFF");
             cmdRole.Items.Add("DOCTOR");
             cmdStatus.Items.Add("ACTIVE");
             cmdStatus.Items.Add("INACTIVE");

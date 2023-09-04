@@ -1,6 +1,6 @@
-﻿namespace HealthCarePlus
+﻿namespace HealthCarePlus.view
 {
-    partial class DashBoard
+    partial class DashBoardStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoard));
-            this.panel3 = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DashBoardStaff));
+            this.panelLoad = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblStaff = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -59,17 +59,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BtnMedication = new System.Windows.Forms.Button();
-            this.btnReport = new System.Windows.Forms.Button();
-            this.btnResource = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnPayment = new System.Windows.Forms.Button();
             this.btnTheaters = new System.Windows.Forms.Button();
-            this.btnSchedule = new System.Windows.Forms.Button();
-            this.btnStaff = new System.Windows.Forms.Button();
             this.btnAppointment = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnRegistration = new System.Windows.Forms.Button();
-            this.panel3.SuspendLayout();
+            this.panelLoad.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel7.SuspendLayout();
@@ -88,19 +83,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel3
+            // panelLoad
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.panel8);
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.panel9);
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(264, 103);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1098, 579);
-            this.panel3.TabIndex = 19;
+            this.panelLoad.BackColor = System.Drawing.Color.White;
+            this.panelLoad.Controls.Add(this.panel8);
+            this.panelLoad.Controls.Add(this.panel7);
+            this.panelLoad.Controls.Add(this.panel9);
+            this.panelLoad.Controls.Add(this.panel6);
+            this.panelLoad.Controls.Add(this.panel5);
+            this.panelLoad.Controls.Add(this.panel4);
+            this.panelLoad.Location = new System.Drawing.Point(264, 103);
+            this.panelLoad.Name = "panelLoad";
+            this.panelLoad.Size = new System.Drawing.Size(1098, 579);
+            this.panelLoad.TabIndex = 22;
             // 
             // panel8
             // 
@@ -290,7 +285,7 @@
             this.lblPatient.AutoSize = true;
             this.lblPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPatient.ForeColor = System.Drawing.Color.OliveDrab;
-            this.lblPatient.Location = new System.Drawing.Point(268, 43);
+            this.lblPatient.Location = new System.Drawing.Point(272, 43);
             this.lblPatient.Name = "lblPatient";
             this.lblPatient.Size = new System.Drawing.Size(87, 95);
             this.lblPatient.TabIndex = 5;
@@ -311,7 +306,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(196, 13);
+            this.label3.Location = new System.Drawing.Point(203, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 19);
             this.label3.TabIndex = 1;
@@ -338,7 +333,6 @@
             this.lblDoctor.Size = new System.Drawing.Size(87, 95);
             this.lblDoctor.TabIndex = 2;
             this.lblDoctor.Text = "0";
-            this.lblDoctor.Click += new System.EventHandler(this.lblDoctor_Click);
             // 
             // pictureBox2
             // 
@@ -368,7 +362,7 @@
             this.panel2.Location = new System.Drawing.Point(264, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1098, 72);
-            this.panel2.TabIndex = 18;
+            this.panel2.TabIndex = 21;
             // 
             // picLogout
             // 
@@ -395,20 +389,15 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.BtnMedication);
-            this.panel1.Controls.Add(this.btnReport);
-            this.panel1.Controls.Add(this.btnResource);
             this.panel1.Controls.Add(this.btnDashboard);
-            this.panel1.Controls.Add(this.btnPayment);
             this.panel1.Controls.Add(this.btnTheaters);
-            this.panel1.Controls.Add(this.btnSchedule);
-            this.panel1.Controls.Add(this.btnStaff);
             this.panel1.Controls.Add(this.btnAppointment);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnRegistration);
-            this.panel1.Location = new System.Drawing.Point(21, 12);
+            this.panel1.Location = new System.Drawing.Point(22, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(223, 679);
-            this.panel1.TabIndex = 17;
+            this.panel1.TabIndex = 20;
             // 
             // BtnMedication
             // 
@@ -416,41 +405,13 @@
             this.BtnMedication.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnMedication.ForeColor = System.Drawing.Color.White;
             this.BtnMedication.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BtnMedication.Location = new System.Drawing.Point(5, 515);
+            this.BtnMedication.Location = new System.Drawing.Point(4, 363);
             this.BtnMedication.Name = "BtnMedication";
             this.BtnMedication.Size = new System.Drawing.Size(217, 52);
             this.BtnMedication.TabIndex = 27;
             this.BtnMedication.Text = "Medication Details";
             this.BtnMedication.UseVisualStyleBackColor = false;
             this.BtnMedication.Click += new System.EventHandler(this.BtnMedication_Click);
-            // 
-            // btnReport
-            // 
-            this.btnReport.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnReport.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnReport.Location = new System.Drawing.Point(5, 617);
-            this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(217, 52);
-            this.btnReport.TabIndex = 26;
-            this.btnReport.Text = "Report";
-            this.btnReport.UseVisualStyleBackColor = false;
-            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
-            // 
-            // btnResource
-            // 
-            this.btnResource.BackColor = System.Drawing.Color.LightGreen;
-            this.btnResource.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResource.ForeColor = System.Drawing.Color.White;
-            this.btnResource.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnResource.Location = new System.Drawing.Point(4, 465);
-            this.btnResource.Name = "btnResource";
-            this.btnResource.Size = new System.Drawing.Size(217, 52);
-            this.btnResource.TabIndex = 25;
-            this.btnResource.Text = "Manage Resourse";
-            this.btnResource.UseVisualStyleBackColor = false;
-            this.btnResource.Click += new System.EventHandler(this.btnResource_Click);
             // 
             // btnDashboard
             // 
@@ -466,61 +427,19 @@
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // btnPayment
-            // 
-            this.btnPayment.BackColor = System.Drawing.Color.LightGreen;
-            this.btnPayment.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPayment.ForeColor = System.Drawing.Color.White;
-            this.btnPayment.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnPayment.Location = new System.Drawing.Point(5, 566);
-            this.btnPayment.Name = "btnPayment";
-            this.btnPayment.Size = new System.Drawing.Size(217, 52);
-            this.btnPayment.TabIndex = 23;
-            this.btnPayment.Text = "Payments";
-            this.btnPayment.UseVisualStyleBackColor = false;
-            this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click);
-            // 
             // btnTheaters
             // 
             this.btnTheaters.BackColor = System.Drawing.Color.LightGreen;
             this.btnTheaters.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTheaters.ForeColor = System.Drawing.Color.White;
             this.btnTheaters.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnTheaters.Location = new System.Drawing.Point(4, 414);
+            this.btnTheaters.Location = new System.Drawing.Point(4, 312);
             this.btnTheaters.Name = "btnTheaters";
             this.btnTheaters.Size = new System.Drawing.Size(217, 52);
             this.btnTheaters.TabIndex = 22;
             this.btnTheaters.Text = "Manage Theaters/Room";
             this.btnTheaters.UseVisualStyleBackColor = false;
             this.btnTheaters.Click += new System.EventHandler(this.btnTheaters_Click);
-            // 
-            // btnSchedule
-            // 
-            this.btnSchedule.BackColor = System.Drawing.Color.LightGreen;
-            this.btnSchedule.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnSchedule.Location = new System.Drawing.Point(4, 363);
-            this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Size = new System.Drawing.Size(217, 52);
-            this.btnSchedule.TabIndex = 21;
-            this.btnSchedule.Text = "Manage Schedule";
-            this.btnSchedule.UseVisualStyleBackColor = false;
-            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
-            // 
-            // btnStaff
-            // 
-            this.btnStaff.BackColor = System.Drawing.Color.LightGreen;
-            this.btnStaff.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStaff.ForeColor = System.Drawing.Color.White;
-            this.btnStaff.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnStaff.Location = new System.Drawing.Point(4, 312);
-            this.btnStaff.Name = "btnStaff";
-            this.btnStaff.Size = new System.Drawing.Size(217, 52);
-            this.btnStaff.TabIndex = 20;
-            this.btnStaff.Text = "Manage Staff";
-            this.btnStaff.UseVisualStyleBackColor = false;
-            this.btnStaff.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // btnAppointment
             // 
@@ -559,18 +478,17 @@
             this.btnRegistration.UseVisualStyleBackColor = false;
             this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
             // 
-            // DashBoard
+            // DashBoardStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1382, 703);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelLoad);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "DashBoard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DashBoard";
-            this.panel3.ResumeLayout(false);
+            this.Name = "DashBoardStaff";
+            this.Text = "DashBoardStaff";
+            this.panelLoad.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -600,45 +518,40 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panelLoad;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lblStaff;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label lblAppointmnet;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label lblTheater;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label lblRoom;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lblPatient;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblDoctor;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox picLogout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Label lblStaff;
-        private System.Windows.Forms.Label lblAppointmnet;
-        private System.Windows.Forms.Label lblTheater;
-        private System.Windows.Forms.Label lblRoom;
-        private System.Windows.Forms.Label lblPatient;
-        private System.Windows.Forms.Label lblDoctor;
         private System.Windows.Forms.Button BtnMedication;
-        private System.Windows.Forms.Button btnReport;
-        private System.Windows.Forms.Button btnResource;
         private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.Button btnPayment;
         private System.Windows.Forms.Button btnTheaters;
-        private System.Windows.Forms.Button btnSchedule;
-        private System.Windows.Forms.Button btnStaff;
         private System.Windows.Forms.Button btnAppointment;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnRegistration;
-        private System.Windows.Forms.PictureBox picLogout;
     }
 }

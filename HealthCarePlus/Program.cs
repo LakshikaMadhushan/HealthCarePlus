@@ -96,7 +96,7 @@ namespace HealthCarePlus
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new login());
+            Application.Run(new login());
             //Application.Run(new Registration());
             //Application.Run(new Patient());
             //Application.Run(new PatientPop());
@@ -108,7 +108,7 @@ namespace HealthCarePlus
             //Application.Run(new Medication());
             //Application.Run(new Schedule());
             //Application.Run(new Report());
-            Application.Run(new DashBoard());
+            //Application.Run(new DashBoard());
             //Application.Run(new PatientPop());
             //Application.Run(new Resource());
             //Application.Run(new Payment());
