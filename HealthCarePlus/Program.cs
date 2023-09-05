@@ -101,7 +101,7 @@ namespace HealthCarePlus
             //Application.Run(new Patient());
             //Application.Run(new PatientPop());
             //Application.Run(new Appointment());
-            Application.Run(new Staff());
+            //Application.Run(new Staff());
             //Application.Run(new Theater());
             //Application.Run(new TheaterPop());
             //Application.Run(new Bill());
@@ -111,7 +111,7 @@ namespace HealthCarePlus
             //Application.Run(new DashBoard());
             //Application.Run(new PatientPop());
             //Application.Run(new Resource());
-            //Application.Run(new Payment());
+            Application.Run(new Payment());
         }
     }
 }
