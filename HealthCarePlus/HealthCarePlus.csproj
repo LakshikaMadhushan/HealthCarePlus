@@ -145,6 +145,7 @@
       <DependentUpon>Appointment.cs</DependentUpon>
     </Compile>
     <Compile Include="controller\BillController.cs" />
+    <Compile Include="controller\MedicationController.cs" />
     <Compile Include="view\Bill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,10 +174,10 @@
     <Compile Include="view\DashBoard.Designer.cs">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Medication.cs">
+    <Compile Include="view\Medication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Medication.Designer.cs">
+    <Compile Include="view\Medication.Designer.cs">
       <DependentUpon>Medication.cs</DependentUpon>
     </Compile>
     <Compile Include="view\PatientPop.cs">
@@ -278,7 +279,7 @@
     <EmbeddedResource Include="view\DashBoard.resx">
       <DependentUpon>DashBoard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Medication.resx">
+    <EmbeddedResource Include="view\Medication.resx">
       <DependentUpon>Medication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\PatientPop.resx">
