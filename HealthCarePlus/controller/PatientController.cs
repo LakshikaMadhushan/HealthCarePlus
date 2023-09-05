@@ -172,5 +172,165 @@ namespace HealthCarePlus.service
             }
         }
 
+
+        //========================================================================
+        public PatientReportData SearchPatientReport(string reportId)
+        {
+            try
+            {
+                connection.Open();
+                string searchQuery = "SELECT * FROM report  WHERE id = @Id;";
+
+                using (MySqlCommand cmd = new MySqlCommand(searchQuery, connection))
+                {
+                    
+                    cmd.Parameters.AddWithValue("@Id", reportId);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                           
+                            PatientReportData reportData = new PatientReportData
+                            {
+                                FileName = reader["fileName"].ToString(),
+                                Date = reader["date"].ToString(),
+                                PatientName = reader["patientName"].ToString(),
+                                PatientId = reader["patientId"].ToString(),
+                                Remark = reader["remark"].ToString(),
+                                Path = reader["path"].ToString(),
+                                PdfData = (byte[])reader["fileData"]
+                            };
+
+                            return reportData;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return null;
+        }
+
+
+
+
+
+        public bool UpdateReport(int reportId, string fileName, byte[] fileData, DateTime date, string patientName, string remark, int patientId, string path)
+        {
+            try
+            {
+                connection.Open();
+
+               
+                string updateQuery = "UPDATE report " +
+                                     "SET fileName = @FileName, fileData = @FileData, date = @Date, " +
+                                     "patientName = @PatientName, remark = @Remark, patientId = @PatientId, path = @Path " +
+                                     "WHERE id = @ReportId";
+
+                using (MySqlCommand command = new MySqlCommand(updateQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@FileName", fileName);
+                    command.Parameters.AddWithValue("@FileData", fileData);
+                    command.Parameters.AddWithValue("@Date", date);
+                    command.Parameters.AddWithValue("@PatientName", patientName);
+                    command.Parameters.AddWithValue("@Remark", remark);
+                    command.Parameters.AddWithValue("@PatientId", patientId);
+                    command.Parameters.AddWithValue("@Path", path);
+                    command.Parameters.AddWithValue("@ReportId", reportId);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
+        public bool RegisterPatientReport(string fileName, byte[] fileData, DateTime date, string patientName, string remark, int patientId, string path)
+        {
+            try
+            {
+                connection.Open();
+
+              
+                string insertQuery = "INSERT INTO report (fileName, fileData, date, patientName, remark, patientId, path) " +
+                                     "VALUES (@FileName, @FileData, @Date, @PatientName, @Remark, @PatientId, @Path)";
+
+                using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@FileName", fileName);
+                    command.Parameters.AddWithValue("@FileData", fileData);
+                    command.Parameters.AddWithValue("@Date", date);
+                    command.Parameters.AddWithValue("@PatientName", patientName);
+                    command.Parameters.AddWithValue("@Remark", remark);
+                    command.Parameters.AddWithValue("@PatientId", patientId);
+                    command.Parameters.AddWithValue("@Path", path);
+
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+
+        public DataTable LoadPatientReports(int patientId)
+        {
+            try
+            {
+                connection.Open();
+
+                // SQL query to select data from the "report" table
+                string selectQuery = "SELECT id, fileName, date, patientName, remark, patientId, path FROM report WHERE patientId=@Id";
+
+                using (MySqlCommand command = new MySqlCommand(selectQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", patientId);
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
+                    {
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        return dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

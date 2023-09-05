@@ -279,7 +279,7 @@ namespace HealthCarePlus
                     else
                     {
                         // No data found for the given ID
-                        MessageBox.Show("Patient record not found.");
+                        MessageBox.Show("staff record not found.");
                     }
                 }
             }
