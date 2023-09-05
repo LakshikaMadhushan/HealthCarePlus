@@ -14,6 +14,7 @@ using System.Xml.Linq;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
+using HealthCarePlus.controller;
 
 namespace HealthCarePlus
 {
@@ -22,6 +23,7 @@ namespace HealthCarePlus
         string con;
         string ids;
         MySqlConnection connection;
+        BillController billController;
         public Bill()
         {
             InitializeComponent();
@@ -33,55 +35,16 @@ namespace HealthCarePlus
             InitializeComponent();
             con = "datasource=localhost;port=3306;username=root;password='';database='mydatabases'";
             connection = new MySqlConnection(con);
+            billController = new BillController(connection);
             ids = id;
-            ShowActiveBills();
+            billController.ShowActiveBills(dataGridView1, txtTotal);
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
         }
 
-        private void ShowActiveBills()
-        {
-            try
-            {
-                connection.Open();
-
-                // Construct the SQL query to retrieve active bills
-                string selectActiveBillsQuery = "SELECT id,patientName,paymentDate, price,type, status  FROM payment WHERE status = 'PENDING'";
-
-                using (MySqlCommand command = new MySqlCommand(selectActiveBillsQuery, connection))
-                {
-                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
-                    {
-                        DataTable billTable = new DataTable();
-                        adapter.Fill(billTable);
-
-                        // Bind the DataTable to the DataGridView
-                        dataGridView1.DataSource = billTable;
-
-                        // Calculate the total price
-                        decimal totalPrice = 0;
-                        foreach (DataRow row in billTable.Rows)
-                        {
-                            totalPrice += Convert.ToDecimal(row["price"]);
-                        }
-
-                 
-                        txtTotal.Text = "Total Price: $" + totalPrice.ToString("0.00");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
+       
         private void Bill_Load(object sender, EventArgs e)
         {
 
@@ -89,7 +52,7 @@ namespace HealthCarePlus
 
         private void btnBill_Click(object sender, EventArgs e)
         {
-            GenerateAndDownloadPDF();
+            billController.GenerateAndDownloadPDF(panel1);
         }
 
         //private void GeneratePDF()
@@ -135,41 +98,41 @@ namespace HealthCarePlus
         //    }
         //}
 
-        private void GenerateAndDownloadPDF()
-        {
-            // Create a new PDF document
-            using (Bitmap bitmap = new Bitmap(panel1.Width, panel1.Height))
-            using (Graphics graphics = Graphics.FromImage(bitmap))
-            {
-                // Capture the contents of a control (e.g., a panel)
-                panel1.DrawToBitmap(bitmap, new Rectangle(0, 0, panel1.Width, panel1.Height));
+        //private void GenerateAndDownloadPDF()
+        //{
+        //    Create a new PDF document
+        //    using (Bitmap bitmap = new Bitmap(panel1.Width, panel1.Height))
+        //    using (Graphics graphics = Graphics.FromImage(bitmap))
+        //    {
+        //        Capture the contents of a control(e.g., a panel)
+        //        panel1.DrawToBitmap(bitmap, new Rectangle(0, 0, panel1.Width, panel1.Height));
 
-                // Create a SaveFileDialog to specify the PDF file path
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "PDF Files|*.pdf";
-                saveFileDialog.Title = "Save PDF File";
-                saveFileDialog.FileName = "output.pdf";
+        //        Create a SaveFileDialog to specify the PDF file path
+        //       SaveFileDialog saveFileDialog = new SaveFileDialog();
+        //        saveFileDialog.Filter = "PDF Files|*.pdf";
+        //        saveFileDialog.Title = "Save PDF File";
+        //        saveFileDialog.FileName = "output.pdf";
 
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // Save the captured content as a PDF file
-                    using (bitmap)
-                    using (var document = new System.Drawing.Printing.PrintDocument())
-                    {
-                        document.PrintPage += (sender, e) =>
-                        {
-                            e.Graphics.DrawImage(bitmap, 0, 0);
-                        };
+        //        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            Save the captured content as a PDF file
+        //            using (bitmap)
+        //            using (var document = new System.Drawing.Printing.PrintDocument())
+        //            {
+        //                document.PrintPage += (sender, e) =>
+        //                {
+        //                    e.Graphics.DrawImage(bitmap, 0, 0);
+        //                };
 
-                        document.PrinterSettings.PrintToFile = true;
-                        document.PrinterSettings.PrintFileName = saveFileDialog.FileName;
-                        document.Print();
-                    }
+        //                document.PrinterSettings.PrintToFile = true;
+        //                document.PrinterSettings.PrintFileName = saveFileDialog.FileName;
+        //                document.Print();
+        //            }
 
-                    MessageBox.Show("PDF file saved successfully!");
-                }
-            }
-        }
+        //            MessageBox.Show("PDF file saved successfully!");
+        //        }
+        //    }
+        //}
 
 
 
