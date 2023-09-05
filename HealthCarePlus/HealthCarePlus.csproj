@@ -138,10 +138,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appointment.cs">
+    <Compile Include="controller\AppointmentController.cs" />
+    <Compile Include="view\Appointment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Appointment.Designer.cs">
+    <Compile Include="view\Appointment.Designer.cs">
       <DependentUpon>Appointment.cs</DependentUpon>
     </Compile>
     <Compile Include="controller\BillController.cs" />
@@ -267,7 +268,7 @@
     <Compile Include="view\staff\TheaterStaff.Designer.cs">
       <DependentUpon>TheaterStaff.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Appointment.resx">
+    <EmbeddedResource Include="view\Appointment.resx">
       <DependentUpon>Appointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Bill.resx">

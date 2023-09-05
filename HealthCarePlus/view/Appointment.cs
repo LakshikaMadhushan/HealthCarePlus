@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using HealthCarePlus.controller;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace HealthCarePlus
     {
         string con;
         MySqlConnection connection;
+        AppointmentController appointmentController;
 
         // Create a list of DoctorItem to hold the doctor data.
         List<DoctorItem> doctorList = new List<DoctorItem>();
@@ -27,6 +29,7 @@ namespace HealthCarePlus
             con = "datasource=localhost;port=3306;username=root;password='';database='mydatabases'";
             //con = "Server=localhost;Database=mydatabase;Uid=root;Pwd='';";
             connection = new MySqlConnection(con);
+            appointmentController= new AppointmentController(connection);
             //timePickerStart.Format = DateTimePickerFormat.Time;
             //timePickerStart.ShowUpDown = true;
             //timePickerEnd.Format = DateTimePickerFormat.Time;
@@ -163,7 +166,7 @@ namespace HealthCarePlus
                 connection.Open();
 
                 // Define your SQL query to retrieve active doctors.
-                string query = "SELECT id, name FROM user WHERE role = 'Doctor' AND status = 'ACTIVE'";
+                string query = "SELECT id, name FROM user WHERE role = 'DOCTOR' AND status = 'ACTIVE'";
 
                 // Create a MySqlCommand with the query and connection.
                 using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -350,44 +353,59 @@ namespace HealthCarePlus
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            //    connection.Open();
+            //    string searchQuery = "SELECT * FROM patient WHERE id = @Id;";
+
+
+            //    MySqlCommand cmd = new MySqlCommand(searchQuery, connection);
+
+            //    // Provide the ID you want to search for as a parameter
+            //    cmd.Parameters.AddWithValue("@Id", txtId.Text);
+
+            //    using (MySqlDataReader reader = cmd.ExecuteReader())
+            //    {
+            //        if (reader.Read())
+            //        {
+            //            // Data found for the given ID
+            //            string name = reader["name"].ToString();
+
+
+
+            //            txtName.Text = name;
+
+
+            //        }
+            //        else
+            //        {
+            //            // No data found for the given ID
+            //            MessageBox.Show("Patient record not found.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            //finally
+            //{
+            //    connection.Close();
+            //}
+
+            string patientId = txtId.Text;
+           
+            string patientName = appointmentController.SearchPatientById(patientId);
+
+            if (!string.IsNullOrEmpty(patientName))
             {
-                connection.Open();
-                string searchQuery = "SELECT * FROM patient WHERE id = @Id;";
-
-
-                MySqlCommand cmd = new MySqlCommand(searchQuery, connection);
-
-                // Provide the ID you want to search for as a parameter
-                cmd.Parameters.AddWithValue("@Id", txtId.Text);
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        // Data found for the given ID
-                        string name = reader["name"].ToString();
-
-
-
-                        txtName.Text = name;
-
-
-                    }
-                    else
-                    {
-                        // No data found for the given ID
-                        MessageBox.Show("Patient record not found.");
-                    }
-                }
+                // Data found for the given ID
+                txtName.Text = patientName;
             }
-            catch (Exception ex)
+            else
             {
-
-            }
-            finally
-            {
-                connection.Close();
+                // No data found for the given ID
+                MessageBox.Show("Patient record not found.");
             }
         }
 
@@ -448,25 +466,7 @@ namespace HealthCarePlus
                         // Execute the appointment table insert.
                         int rowsAffected = insertAppointmentCommand.ExecuteNonQuery();
 
-                        //if (rowsAffected > 0)
-                        //{
-                        //    // Successfully inserted into the appointment table.
-
-                        //    //update the "schedule" table by incrementing countPatient by 1.
-                        //    string updateScheduleQuery = "UPDATE schedule SET countPatient = countPatient + 1 WHERE id = @ScheduleId";
-
-
-                        //    using (MySqlCommand updateScheduleCommand = new MySqlCommand(updateScheduleQuery, connection))
-                        //    {
-                        //        updateScheduleCommand.Transaction = transaction;
-
-
-                        //        updateScheduleCommand.Parameters.AddWithValue("@ScheduleId", selectedSchedule);
-
-
-                        //        int rowsUpdated = updateScheduleCommand.ExecuteNonQuery();
-
-                                //if (rowsUpdated > 0)
+                       
                                 if (rowsAffected > 0)
                                 {
                                     // Commit the transaction to save the appointment and update the schedule.
@@ -504,14 +504,9 @@ namespace HealthCarePlus
                             transaction.Rollback();
                             Console.WriteLine("Failed to update schedule.");
                         }
-                        //}
+                        
                     }
-                        //else
-                        //{
-                        //    transaction.Rollback();
-                        //    Console.WriteLine("Failed to insert appointment.");
-                        //}
-                    //}
+                        
 
                     table_load();
                 }
@@ -528,42 +523,58 @@ namespace HealthCarePlus
         }
             private void btnSearch2_Click(object sender, EventArgs e)
         {
-            try
+            //try
+            //{
+            //    connection.Open();
+            //    string searchQuery = "SELECT * FROM appointment WHERE id = @Id;";
+
+
+            //    MySqlCommand cmd = new MySqlCommand(searchQuery, connection);
+
+            //    // Provide the ID you want to search for as a parameter
+            //    cmd.Parameters.AddWithValue("@Id", txtAppointment.Text);
+
+            //    using (MySqlDataReader reader = cmd.ExecuteReader())
+            //    {
+            //        if (reader.Read())
+            //        {
+            //            // Data found for the given ID
+            //            string sheduleId = reader["scheduleId"].ToString();
+            //            string price = reader["price"].ToString();
+            //            string status = reader["status"].ToString();
+            //            cmbStatus.Text = "";
+            //            cmbStatus.SelectedText = status;    
+            //        }
+            //        else
+            //        {
+            //            // No data found for the given ID
+            //            MessageBox.Show("Patient record not found.");
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+
+            //}
+            //finally
+            //{
+            //    connection.Close();
+            //}
+
+            string appointmentId = txtAppointment.Text;
+          
+
+            if (appointmentController.SearchAppointmentById(appointmentId, out string scheduleId, out string price, out string status))
             {
-                connection.Open();
-                string searchQuery = "SELECT * FROM appointment WHERE id = @Id;";
-
-
-                MySqlCommand cmd = new MySqlCommand(searchQuery, connection);
-
-                // Provide the ID you want to search for as a parameter
-                cmd.Parameters.AddWithValue("@Id", txtAppointment.Text);
-
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        // Data found for the given ID
-                        string sheduleId = reader["scheduleId"].ToString();
-                        string price = reader["price"].ToString();
-                        string status = reader["status"].ToString();
-                        cmbStatus.Text = "";
-                        cmbStatus.SelectedText = status;    
-                    }
-                    else
-                    {
-                        // No data found for the given ID
-                        MessageBox.Show("Patient record not found.");
-                    }
-                }
+                // Data found for the given ID
+                //txtScheduleId.Text = scheduleId;
+                txtPrice.Text = price;
+                cmbStatus.Text = status;
             }
-            catch (Exception ex)
+            else
             {
-
-            }
-            finally
-            {
-                connection.Close();
+                // No data found for the given ID
+                MessageBox.Show("Appointment record not found.");
             }
         }
 
@@ -603,64 +614,79 @@ namespace HealthCarePlus
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAppointment.Text) || (cmbStatus.SelectedText==null)){
-                MessageBox.Show("Please Fill All Required Field.");
-                return;
+            //if (string.IsNullOrEmpty(txtAppointment.Text) || (cmbStatus.SelectedText==null)){
+            //    MessageBox.Show("Please Fill All Required Field.");
+            //    return;
 
-            }
-            try
-            {
-                connection.Open();
+            //}
+            //try
+            //{
+            //    connection.Open();
 
-                // Define your SQL query to update the "status" in the "appointment" table.
-                string updateQuery = "UPDATE appointment SET status = @Status WHERE id = @AppointmentId";
+            //    // Define your SQL query to update the "status" in the "appointment" table.
+            //    string updateQuery = "UPDATE appointment SET status = @Status WHERE id = @AppointmentId";
 
-                // Create a MySqlCommand with the query and connection.
-                using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
-                {
-                    // Set parameter values for the UPDATE query.
-                    updateCommand.Parameters.AddWithValue("@Status", cmbStatus.Text);
-                    updateCommand.Parameters.AddWithValue("@AppointmentId", txtAppointment.Text);
+            //    // Create a MySqlCommand with the query and connection.
+            //    using (MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection))
+            //    {
+            //        // Set parameter values for the UPDATE query.
+            //        updateCommand.Parameters.AddWithValue("@Status", cmbStatus.Text);
+            //        updateCommand.Parameters.AddWithValue("@AppointmentId", txtAppointment.Text);
 
-                    // Execute the UPDATE query.
-                    int rowsAffected = updateCommand.ExecuteNonQuery();
+            //        // Execute the UPDATE query.
+            //        int rowsAffected = updateCommand.ExecuteNonQuery();
 
-                    if (rowsAffected > 0)
-                    {
-                        Console.WriteLine("Update successful.");
-                        connection.Close();
-                        table_load();
+            //        if (rowsAffected > 0)
+            //        {
+            //            Console.WriteLine("Update successful.");
+            //            connection.Close();
+            //            table_load();
 
-                    }
-                    else
-                    {
-                        Console.WriteLine("No records were updated.");
-                    }
+            //        }
+            //        else
+            //        {
+            //            Console.WriteLine("No records were updated.");
+            //        }
 
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-            }
-            finally
-            {
-                connection.Close();
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine("Error: " + ex.Message);
+            //}
+            //finally
+            //{
+            //    connection.Close();
+            //}
             //=====================
 
             //====================
+
+            string appointmentId = txtAppointment.Text;
+            string status = cmbStatus.Text;
+
+      
+
+            if (appointmentController.UpdateAppointmentStatus(appointmentId, status))
+            {
+                Console.WriteLine("Update successful.");
+                table_load();
+            }
+            else
+            {
+                Console.WriteLine("No records were updated.");
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-         
+            doctor_load();
 
             txtId.Text = "";
             txtPrice.Text = "";
             txtName.Text = "";
             cmbDate.Text = "";
-            cmdDoctor.Text = "";
+            //cmdDoctor.Text = "";
             cmbStatus.Text = "";
             txtCount.Text = "";
             txtAppointment.Text = "";
