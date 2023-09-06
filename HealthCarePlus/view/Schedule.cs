@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using HealthCarePlus.controller;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace HealthCarePlus
     {
         string con;
         MySqlConnection connection;
+        ScheduleController scheduleController;
        
         // Create a list of DoctorItem to hold the doctor data.
         List<DoctorItem> doctorList = new List<DoctorItem>();
@@ -29,6 +31,7 @@ namespace HealthCarePlus
             con = "datasource=localhost;port=3306;username=root;password='';database='mydatabases'";
             //con = "Server=localhost;Database=mydatabase;Uid=root;Pwd='';";
             connection = new MySqlConnection(con);
+             scheduleController = new ScheduleController(connection);
             timePickerStart.Format = DateTimePickerFormat.Time;
             timePickerStart.ShowUpDown = true;
             timePickerEnd.Format = DateTimePickerFormat.Time;
@@ -302,34 +305,36 @@ namespace HealthCarePlus
 
         private void table_load()
         {
-            try
-            {
-                // Create a connection to the database
+            //try
+            //{
+            //    // Create a connection to the database
 
-                connection.Open();
+            //    connection.Open();
 
-                // Define the SQL query to select data
-                string selectQuery = "SELECT id AS Id,userId AS DoctorId,userName AS DoctorName,startTime AS StartTime,endTime AS EndTime,status AS Status, date AS Date,price AS Price,maxPatient AS MaxPatient FROM schedule"; // Replace with your table name
+            //    // Define the SQL query to select data
+            //    string selectQuery = "SELECT id AS Id,userId AS DoctorId,userName AS DoctorName,startTime AS StartTime,endTime AS EndTime,status AS Status, date AS Date,price AS Price,maxPatient AS MaxPatient FROM schedule"; // Replace with your table name
 
-                // Create a data adapter to execute the query and fill a DataSet
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, connection))
-                {
-                    DataSet dataSet = new DataSet();
-                    adapter.Fill(dataSet, "schedule"); // Replace with your table name
+            //    // Create a data adapter to execute the query and fill a DataSet
+            //    using (MySqlDataAdapter adapter = new MySqlDataAdapter(selectQuery, connection))
+            //    {
+            //        DataSet dataSet = new DataSet();
+            //        adapter.Fill(dataSet, "schedule"); // Replace with your table name
 
 
-                    // Bind the DataGridView to a specific DataTable within the DataSet
-                    dataGridView1.DataSource = dataSet.Tables["schedule"]; // Replace with your table name
-                }
+            //        // Bind the DataGridView to a specific DataTable within the DataSet
+            //        dataGridView1.DataSource = dataSet.Tables["schedule"]; // Replace with your table name
+            //    }
 
-                // Close the connection
-                connection.Close();
+            //    // Close the connection
+            //    connection.Close();
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message);
+            //}
+
+            scheduleController.LoadData(dataGridView1);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

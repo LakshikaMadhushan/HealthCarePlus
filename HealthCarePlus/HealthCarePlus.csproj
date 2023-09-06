@@ -139,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\AppointmentController.cs" />
+    <Compile Include="controller\ScheduleController.cs" />
+    <Compile Include="controller\TheaterController.cs" />
+    <Compile Include="model\TheaterData.cs" />
     <Compile Include="view\Appointment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,22 +209,22 @@
       <DependentUpon>Resource.cs</DependentUpon>
     </Compile>
     <Compile Include="controller\Dashboard.cs" />
-    <Compile Include="TheaterPop.cs">
+    <Compile Include="view\TheaterPop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TheaterPop.Designer.cs">
+    <Compile Include="view\TheaterPop.Designer.cs">
       <DependentUpon>TheaterPop.cs</DependentUpon>
     </Compile>
-    <Compile Include="Theater.cs">
+    <Compile Include="view\Theater.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Theater.Designer.cs">
+    <Compile Include="view\Theater.Designer.cs">
       <DependentUpon>Theater.cs</DependentUpon>
     </Compile>
-    <Compile Include="Schedule.cs">
+    <Compile Include="view\Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Schedule.Designer.cs">
+    <Compile Include="view\Schedule.Designer.cs">
       <DependentUpon>Schedule.cs</DependentUpon>
     </Compile>
     <Compile Include="view\Staff.cs">
@@ -297,10 +300,10 @@
     <EmbeddedResource Include="view\Resource.resx">
       <DependentUpon>Resource.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TheaterPop.resx">
+    <EmbeddedResource Include="view\TheaterPop.resx">
       <DependentUpon>TheaterPop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Schedule.resx">
+    <EmbeddedResource Include="view\Schedule.resx">
       <DependentUpon>Schedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\Staff.resx">
@@ -321,7 +324,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Theater.resx">
+    <EmbeddedResource Include="view\Theater.resx">
       <DependentUpon>Theater.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\staff\DashBoardStaff.resx">
